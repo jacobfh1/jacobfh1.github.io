@@ -1,4 +1,4 @@
-theme: minima
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 title: Jacob Fredegaard Hansen
 description: Personal portfolio of various projects.
 plugins:
