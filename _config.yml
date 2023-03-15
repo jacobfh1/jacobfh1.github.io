@@ -1,3 +1,5 @@
 theme: minima
 title: Jacob Fredegaard Hansen
 description: Personal portfolio of various projects.
+plugins:
+  - jekyll-include-cache
