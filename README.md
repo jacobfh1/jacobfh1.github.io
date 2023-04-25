@@ -1,5 +1,3 @@
-# Welcome!2
-
 Passionate and enthusiastic data scientist seeking to broaden my expertise at the intersection of biology and computer science.
 
 I firmly believe that collaboration between different scientific domains fosters groundbreaking ideas and discoveries that are impossible to achieve alone. That's why I am dedicated to advancing my knowledge in bioinformatics within a diverse and multicultural research environment.
