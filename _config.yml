@@ -3,3 +3,12 @@ title: Jacob Fredegaard Hansen
 description: Personal portfolio of various projects.
 plugins:
   - jekyll-include-cache
+
+# Main navigation tabs
+main:
+  - title: "Home"
+    url: /
+  - title: "About"
+    url: /about/
+  - title: "Projects"
+    url: /projects/
