@@ -1,8 +1,9 @@
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+remote_theme: pages-themes/minimal@v0.2.0
 title: Jacob Fredegaard Hansen
 description: Personal portfolio of various projects.
 plugins:
   - jekyll-include-cache
+  - jekyll-remote-theme
 
 main:
   - title: "Home"
