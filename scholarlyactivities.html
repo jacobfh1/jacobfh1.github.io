@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
   <title>Jacob Fredegaard Hansen</title>
@@ -14,12 +8,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <style>
+    .column1 {
+        width: 50%;
+    }
+    .column2 {
+        width: 25%;
+    }
+    .column3 {
+        width: 25%;
+    }
+    .hoverable tr:hover {
+        background-color: #f5f5f5; /* Light grey background on hover */
+    }
+    table {
+        table-layout: fixed; /* This ensures the table respects the width of the columns */
+        width: 100%; /* Adjust as needed */
+    }
+  </style>
 </head>
 <body>
 
 
-<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+ <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 	  <div class="container">
 		<div class="navbar-header">
 		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -48,46 +60,46 @@
         <div class="col-md-8">
             <div style="margin-top:3%; text-align:justify;">                
                 <h3>Conferences Attended</h3>
-                <table>
+                <table class="hoverable">
                     <tr>
-                        <td style="padding-right: 100px;"><a href="https://d3aconference.dk/">D3A Conference: Danish Digitalization, Data Science and AI 1.0</a></td>
-                        <td style="padding-right: 30px;">1-2 February, 2024</td>
-                        <td>Nyborg, Denmark</td>
+                        <td class="column1""><strong><a href="https://d3aconference.dk/">D3A Conference: Danish Digitalization,<br>Data Science and AI 1.0</a></strong></td>
+                        <td class="column2"">1-2 February, 2024</td>
+                        <td class="column3">Nyborg, Denmark</td>
                     </tr>
                     <tr>
-                        <td style="padding-right: 20px;"><a href="https://eubic-ms.org/">EuBIC-MS Winter School 2024</a></td>
-                        <td style="padding-right: 20px;">15-19 January, 2024</td>
-                        <td>Winterberg, Germany</td>
+                        <td class="column1""><strong><a href="https://eubic-ms.org/">EuBIC-MS Winter School 2024</a></strong></td>
+                        <td class="column2"">15-19 January, 2024</td>
+                        <td class="column3">Winterberg, Germany</td>
                     </tr>
                     <tr>
-                        <td style="padding-right: 20px;"><a href="https://www.embl.org/about/info/course-and-conference-office/events/csb23-01/#vf-tabs__section-overview">EMBO Workshop: Computational structural biology</a></td>
-                        <td style="padding-right: 20px;">6-9 December, 2023</td>
-                        <td>Odense, Denmark</td>
+                        <td class="column1""><strong><a href="https://www.embl.org/about/info/course-and-conference-office/events/csb23-01/#vf-tabs__section-overview">EMBO Workshop: Computational structural biology</a></strong></td>
+                        <td class="column2"">6-9 December, 2023</td>
+                        <td class="column3">Odense, Denmark</td>
                     </tr>
                     <tr>
-                        <td style="padding-right: 20px;"><a href="https://jamboree.igem.org/">iGEM Grand Jamboree 2023</a></td>
-                        <td style="padding-right: 20px;">2-5 November, 2023</td>
-                        <td>Paris, France</td>
+                        <td class="column1""><strong><a href="https://jamboree.igem.org/">iGEM Grand Jamboree 2023</a></strong></td>
+                        <td class="column2"">2-5 November, 2023</td>
+                        <td class="column3">Paris, France</td>
                     </tr>
                     <tr>
-                        <td style="padding-right: 20px;"><a href="https://dapsoc.org/">Danish Proteomics Society (DAPSOC) 2023 Symposium</a></td>
-                        <td style="padding-right: 20px;">5th of December, 2023</td>
-                        <td>Odense, Denmark</td>
+                        <td class="column1""><strong><a href="https://dapsoc.org/">Danish Proteomics Society (DAPSOC)<br>2023 Symposium</a></strong></td>
+                        <td class="column2"">5th of December, 2023</td>
+                        <td class="column3">Odense, Denmark</td>
                     </tr>
                     <tr>
-                        <td style="padding-right: 20px;"><a href="https://elixir-europe.org/about-us/who-we-are/nodes/denmark">7th Annual Danish Bioinformatics Conference 2023</a></td>
-                        <td style="padding-right: 20px;">7-8 September, 2023</td>
-                        <td>Aarhus, Denmark</td>
+                        <td class="column1""><strong><a href="https://elixir-europe.org/about-us/who-we-are/nodes/denmark">7th Annual Danish Bioinformatics Conference 2023</a></strong></td>
+                        <td class="column2"">7-8 September, 2023</td>
+                        <td class="column3">Aarhus, Denmark</td>
                     </tr>
                     <tr>
-                        <td style="padding-right: 20px;"><a href="https://ddsa.dk/">Danish Data Science 2022</a></td>
-                        <td style="padding-right: 20px;">7-8 November, 2022</td>
-                        <td>Billund, Denmark</td>
+                        <td class="column1""><strong><a href="https://ddsa.dk/">Danish Data Science 2022</a></strong></td>
+                        <td class="column2"">7-8 November, 2022</td>
+                        <td class="column3">Billund, Denmark</td>
                     </tr>
                     <tr>
-                        <td style="padding-right: 20px;"><a href="https://jamboree.igem.org/">iGEM Grand Jamboree 2019</a></td>
-                        <td style="padding-right: 20px;">October 31 - November 4, 2019</td>
-                        <td>Boston, MA, USA</td>
+                        <td class="column1""><strong><a href="https://jamboree.igem.org/">iGEM Grand Jamboree 2019</a></strong></td>
+                        <td class="column2"">October 31 -<br>November 4, 2019</td>
+                        <td class="column3">Boston, MA, USA</td>
                     </tr>
                     <!-- Add more rows as needed -->
                 </table>
@@ -95,32 +107,32 @@
                 
 
                 <h3>Workshops Attended</h3>
-                <table>
+                <table class="hoverable">
                     <tr>
-                        <td style="padding-right: 20px;"><strong>AI Workshop: Leverage Generative AI in Research and Education</strong></td>
-                        <td style="padding-right: 20px;">Spring 2024</td>
-                        <td><a href="https://www.zitilite.com/">Zitilite</a></td>
+                        <td class="column1""><strong>AI Workshop: Leverage Generative AI <br> in Research and Education</strong></td>
+                        <td class="column2"">22th of January, 2024</td>
+                        <td class="column3"><a href="https://www.zitilite.com/">Zitilite</a></td>
                     </tr>
                     <tr>
-                        <td style="padding-right: 20px;"><strong>Git & GitHub</strong></td>
-                        <td style="padding-right: 20px;">16th of January, 2023</td>
-                        <td><a href="https://heads.ku.dk/">Center for Health Data Science (HeaDS)</a></td>
+                        <td class="column1""><strong>Git & GitHub</strong></td>
+                        <td class="column2"">16th of January, 2023</td>
+                        <td class="column3"><a href="https://heads.ku.dk/">Center for Health<br>Data Science (HeaDS)</a></td>
                     </tr>
                     <!-- Add more rows as needed -->
                 </table>
                 
 
                 <h3>Courses Taught</h3>
-                <table>
+                <table class="hoverable">
                     <tr>
-                        <td style="padding-right: 20px;"><strong><a href="https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb834&lang=en">BMB834: Protein structure, dynamics and modelling</a></strong></td>
-                        <td style="padding-right: 20px;"><a href="https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi">Department of Biochemistry and Molecular Biology, University of Southern Denmark</a></td>
-                        <td>Spring 2024</td>
+                        <td class="column1""><strong><a href="https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb834&lang=en">BMB834: Protein structure, dynamics and modelling</a></strong></td>
+                        <td class="column2">Spring 2024</td>
+                        <td class="column3""><a href="https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi">Department of Biochemistry and Molecular Biology,<br>University of Southern<br>Denmark</a></td>
                     </tr>
                     <tr>
-                        <td style="padding-right: 20px;"><strong><a href="https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb533&lang=en">BMB533: Molecular biology and protein chemistry</a></strong></td>
-                        <td style="padding-right: 20px;"><a href="https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi">Department of Biochemistry and Molecular Biology, University of Southern Denmark</a></td>
-                        <td>Autumn 2020 - Autumn 2022</td>
+                        <td class="column1""><strong><a href="https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb533&lang=en">BMB533: Molecular biology and protein chemistry</a></strong></td>
+                        <td class="column2">Autumn 2020-'22</td>
+                        <td class="column3""><a href="https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi">Department of Biochemistry and Molecular Biology,<br>University of Southern<br>Denmark</a></td>
                     </tr>
                     <!-- Add more rows as needed -->
                 </table>
