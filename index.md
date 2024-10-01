@@ -6,18 +6,6 @@ description: Jacob's Online Portfolio
 
 # Jacob's Portfolio
 
-## Navigation
-- [About Me](#about-me)
-- [Education](#education)
-- [Experience](#experience)
-- [Teaching](#teaching)
-- [Conference Activities](#conference-activities)
-- [Workshops Attended](#workshops-attended)
-- [Courses Taught](#courses-taught)
-- [Connect with Me](#connect-with-me)
-
----
-
 ## About Me {#about-me}
 Brief introduction about yourself.
 
