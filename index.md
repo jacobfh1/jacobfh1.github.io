@@ -6,13 +6,15 @@ description: Jacob's Online Portfolio
 
 # Jacob's Portfolio
 
-<nav>
-- [About Me](#about)
+## Navigation
+- [About Me](#about-me)
 - [Education](#education)
 - [Experience](#experience)
 - [Teaching](#teaching)
-- [Conferences](#conferences)
-</nav>
+- [Conference Activities](#conference-activities)
+- [Workshops Attended](#workshops-attended)
+- [Courses Taught](#courses-taught)
+- [Connect with Me](#connect-with-me)
 
 ---
 
@@ -113,6 +115,11 @@ _Department_: [Department of Biochemistry and Molecular Biology, University of S
 
 ---
 
-<footer>
-<p>&copy; 2024 Jacob Fredegaard Hansen</p>
-</footer>
+footer {
+    position: relative; /* Change to relative or static */
+    bottom: 0;          /* Optional: adjust based on your layout */
+    width: 100%;       /* Ensure it spans the full width */
+    padding: 20px;     /* Add some padding */
+    background-color: #f8f9fa; /* Adjust background color */
+    text-align: center; /* Center align text */
+}
