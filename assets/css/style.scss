@@ -2,3 +2,27 @@
 ---
 
 @import "jekyll-theme-minimal";
+
+nav {
+    margin: 20px 0; /* Adjust the spacing */
+  }
+  
+  nav ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+  }
+  
+  nav li {
+    display: inline; /* Display links in a single line */
+    margin-right: 15px; /* Space between links */
+  }
+  
+  nav a {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Set link color */
+  }
+  
+  nav a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
