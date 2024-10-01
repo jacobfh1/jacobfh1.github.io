@@ -73,20 +73,36 @@ Overview of your teaching modules and contributions.
 
 ## Workshops Attended
 
-| **Workshop**                                           | **Date**              | **Host**                                                    |
-| ------------------------------------------------------ | --------------------- | ----------------------------------------------------------- |
-| AI Workshop: Leverage Generative AI in Research and Education | 22 January, 2024      | [Zitilite](https://www.zitilite.com/)                       |
-| Git & GitHub                                           | 16 January, 2023      | [Center for Health Data Science (HeaDS)](https://heads.ku.dk/) |
+**[AI Workshop: Leverage Generative AI in Research and Education](https://www.zitilite.com/)**  
+_Date_: 22nd of January, 2024  
+_Organized by_: Zitilite  
+
+---
+
+**[Git & GitHub](https://heads.ku.dk/)**  
+_Date_: 16th of January, 2023  
+_Organized by_: Center for Health Data Science (HeaDS)  
 
 ---
 
 ## Courses Taught
 
-| **Course**                                                                                         | **Date**              | **Department**                                            |
-| --------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------- |
-| [BMB834: Protein Structure, Dynamics, and Modelling](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb834&lang=en) | Spring 2024           | [Department of Biochemistry and Molecular Biology, University of Southern Denmark](https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi) |
-| [BMB209: Workshops in Applied Bioinformatics](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb209&lang=en) | Autumn 2022-'23       | [Department of Biochemistry and Molecular Biology, University of Southern Denmark](https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi) |
-| [BMB533: Molecular Biology and Protein Chemistry](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb533&lang=en) | Autumn 2020-'21       | [Department of Biochemistry and Molecular Biology, University of Southern Denmark](https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi) |
+**[BMB834: Protein Structure, Dynamics, and Modelling](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb834&lang=en)**  
+_Term_: Spring 2024  
+_Department_: [Department of Biochemistry and Molecular Biology, University of Southern Denmark](https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi)  
+
+---
+
+**[BMB209: Workshops in Applied Bioinformatics](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb209&lang=en)**  
+_Term_: Autumn 2022-'23  
+_Department_: [Department of Biochemistry and Molecular Biology, University of Southern Denmark](https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi)  
+
+---
+
+**[BMB533: Molecular Biology and Protein Chemistry](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb533&lang=en)**  
+_Term_: Autumn 2020-'21  
+_Department_: [Department of Biochemistry and Molecular Biology, University of Southern Denmark](https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi)  
+
 
 ---
 
