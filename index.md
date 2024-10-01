@@ -39,40 +39,37 @@ Overview of your teaching modules and contributions.
 
 ## Conference Activities
 
-## Conferences Attended
-
-- **[D3A Conference: Danish Digitalization, Data Science and AI 1.0](https://d3aconference.dk/)**  
+**[D3A Conference: Danish Digitalization, Data Science and AI 1.0](https://d3aconference.dk/)**  
   _Date_: 1-2 February, 2024  
   _Location_: Nyborg, Denmark
 
-- **[EuBIC-MS Winter School 2024](https://eubic-ms.org/)**  
+**[EuBIC-MS Winter School 2024](https://eubic-ms.org/)**  
   _Date_: 15-19 January, 2024  
   _Location_: Winterberg, Germany
 
-- **[EMBO Workshop: Computational Structural Biology](https://www.embl.org/about/info/course-and-conference-office/events/csb23-01/#vf-tabs__section-overview)**  
+**[EMBO Workshop: Computational Structural Biology](https://www.embl.org/about/info/course-and-conference-office/events/csb23-01/#vf-tabs__section-overview)**  
   _Date_: 6-9 December, 2023  
   _Location_: Heidelberg, Germany
 
-- **[Danish Proteomics Society (DAPSOC) 2023 Symposium](https://dapsoc.org/)**  
+**[Danish Proteomics Society (DAPSOC) 2023 Symposium](https://dapsoc.org/)**  
   _Date_: 5th of December, 2023  
   _Location_: Odense, Denmark
 
-- **[iGEM Grand Jamboree 2023](https://jamboree.igem.org/)**  
+**[iGEM Grand Jamboree 2023](https://jamboree.igem.org/)**  
   _Date_: 2-5 November, 2023  
   _Location_: Paris, France
 
-- **[7th Annual Danish Bioinformatics Conference 2023](https://elixir-europe.org/about-us/who-we-are/nodes/denmark)**  
+**[7th Annual Danish Bioinformatics Conference 2023](https://elixir-europe.org/about-us/who-we-are/nodes/denmark)**  
   _Date_: 7-8 September, 2023  
   _Location_: Aarhus, Denmark
 
-- **[Danish Data Science 2022](https://ddsa.dk/)**  
+**[Danish Data Science 2022](https://ddsa.dk/)**  
   _Date_: 7-8 November, 2022  
   _Location_: Billund, Denmark
 
-- **[iGEM Grand Jamboree 2019](https://jamboree.igem.org/)**  
+**[iGEM Grand Jamboree 2019](https://jamboree.igem.org/)**  
   _Date_: October 31 - November 4, 2019  
   _Location_: Boston, MA, USA
-
 
 ## Workshops Attended
 
