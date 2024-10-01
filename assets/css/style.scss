@@ -3,16 +3,24 @@
 
 @import "jekyll-theme-minimal";
 
-body {
-    padding-bottom: 100px; /* Adjust based on footer height */
+/* Ensure body takes the full height and footer stays at the bottom */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    min-height: calc(100vh - 60px); /* Adjust 60px to the height of your footer */
+    padding-bottom: 20px; /* Optional: add some bottom padding */
 }
 
 footer {
-    position: relative; /* Change to relative to avoid overlapping */
+    height: 60px; /* Set the height of your footer */
+    text-align: center;
+    line-height: 60px; /* Center text vertically */
+    background-color: #f8f9fa; /* Optional: change background color */
+    position: relative; /* Ensure it behaves normally */
+    bottom: 0; /* Position at the bottom */
     width: 100%;
-    height: 100px; /* Set a height for the footer */
-    background-color: #f8f9fa; /* Optional: footer background color */
-    text-align: center; /* Center text */
-    margin-top: 20px; /* Add some space above the footer */
-    clear: both; /* Clear floats if necessary */
 }

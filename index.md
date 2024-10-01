@@ -115,11 +115,6 @@ _Department_: [Department of Biochemistry and Molecular Biology, University of S
 
 ---
 
-footer {
-    position: relative; /* Change to relative or static */
-    bottom: 0;          /* Optional: adjust based on your layout */
-    width: 100%;       /* Ensure it spans the full width */
-    padding: 20px;     /* Add some padding */
-    background-color: #f8f9fa; /* Adjust background color */
-    text-align: center; /* Center align text */
-}
+<footer>
+<p>&copy; 2024 Jacob Fredegaard Hansen</p>
+</footer>
