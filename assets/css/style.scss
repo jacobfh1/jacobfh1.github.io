@@ -24,4 +24,30 @@ nav {
   nav a:hover {
     text-decoration: underline; /* Underline on hover */
   }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .wrapper {
+    min-height: 100vh; /* Ensure the wrapper takes at least the full height of the viewport */
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+  }
+  
+  header {
+    padding: 20px; /* Add padding to the header for spacing */
+  }
+  
+  section {
+    flex: 1; /* Allow the section to expand and take available space */
+    padding: 20px; /* Add padding to the content section */
+  }
+  
+  footer {
+    padding: 10px; /* Add padding to the footer */
+    text-align: center; /* Center-align footer text */
+  }
   
