@@ -18,28 +18,28 @@ description: Jacob's Online Portfolio
 
 ---
 
-## About Me
+## About Me {#about-me}
 Brief introduction about yourself.
 
 ---
 
-## Education
+## Education {#education}
 - Master's Degree in Computational Biomedicine
 - Biochemistry and Molecular Biology
 
 ---
 
-## Experience
+## Experience {#experience}
 Details of professional and freelance work.
 
 ---
 
-## Teaching
+## Teaching {#teaching}
 Overview of your teaching modules and contributions.
 
 ---
 
-## Conference Activities
+## Conference Activities {#conference-activities}
 
 **[D3A Conference: Danish Digitalization, Data Science and AI 1.0](https://d3aconference.dk/)**  
   _Date_: 1-2 February, 2024  
@@ -73,7 +73,7 @@ Overview of your teaching modules and contributions.
   _Date_: October 31 - November 4, 2019  
   _Location_: Boston, MA, USA
 
-## Workshops Attended
+## Workshops Attended {#workshops-attended}
 
 **[AI Workshop: Leverage Generative AI in Research and Education](https://www.zitilite.com/)**  
 _Date_: 22nd of January, 2024  
@@ -87,7 +87,7 @@ _Organized by_: Center for Health Data Science (HeaDS)
 
 ---
 
-## Courses Taught
+## Courses Taught {#courses-taught}
 
 **[BMB834: Protein Structure, Dynamics, and Modelling](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb834&lang=en)**  
 _Term_: Spring 2024  
@@ -108,7 +108,7 @@ _Department_: [Department of Biochemistry and Molecular Biology, University of S
 
 ---
 
-## Connect with Me:
+## Connect with Me {#connect-with-me}
 - [Twitter](https://twitter.com/jacobfh)
 - [LinkedIn](https://www.linkedin.com/in/jacobfh/)
 
