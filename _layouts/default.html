@@ -12,26 +12,21 @@
     <![endif]-->
     {% include head-custom.html %}
     <style>
-      /* Styles for the collapsible sections */
+      /* Collapsible section titles - cursor change and hover effect */
       .collapsible-section h2 {
         cursor: pointer; /* Change cursor to pointer */
-        padding: 10px;
-        background-color: #f1f1f1;
-        border: 1px solid #ddd;
-        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        color: black; /* Default color */
+        transition: color 0.3s ease; /* Smooth transition for hover effect */
       }
 
-      /* Hover effect on the section titles */
+      /* Hover effect: Light blue text */
       .collapsible-section h2:hover {
-        background-color: #e0e0e0; /* Lighter background on hover */
+        color: lightblue;
       }
 
-      /* Initially hide content */
+      /* Hide content by default */
       .collapsible-section .content {
-        display: none; /* Hidden by default */
-        padding: 10px;
-        border-left: 2px solid #ddd;
-        background-color: #f9f9f9;
+        display: none;
       }
     </style>
   </head>
@@ -78,7 +73,8 @@
         <div class="collapsible-section" id="about-me">
           <h2>About Me</h2>
           <div class="content">
-            <!-- About Me content here -->
+            <!-- About Me content -->
+            Plain text for about me goes here.
           </div>
         </div>
 
@@ -113,7 +109,8 @@
         <div class="collapsible-section" id="conference-activities">
           <h2>Conference Activities</h2>
           <div class="content">
-            <!-- Conference Activities content -->
+            <!-- Conference activities details -->
+            Conference activities information goes here.
           </div>
         </div>
 
@@ -121,7 +118,8 @@
         <div class="collapsible-section" id="workshops-attended">
           <h2>Workshops Attended</h2>
           <div class="content">
-            <!-- Workshops content -->
+            <!-- Workshops information -->
+            Workshop details go here.
           </div>
         </div>
 
@@ -130,6 +128,7 @@
           <h2>Courses Taught</h2>
           <div class="content">
             <!-- Courses content -->
+            Courses taught information goes here.
           </div>
         </div>
 
@@ -138,6 +137,7 @@
           <h2>Connect with Me</h2>
           <div class="content">
             <!-- Social media links, etc. -->
+            Connect with me information goes here.
           </div>
         </div>
 
