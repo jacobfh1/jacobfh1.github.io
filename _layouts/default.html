@@ -11,6 +11,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     {% include head-custom.html %}
+    <style>
+      /* Collapsible section titles - cursor change and hover effect */
+      .collapsible-section h2 {
+        cursor: pointer; /* Change cursor to pointer */
+        color: black; /* Default color */
+        transition: color 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      /* Hover effect: Light blue text */
+      .collapsible-section h2:hover {
+        color: lightblue;
+      }
+
+      /* Hide content by default */
+      .collapsible-section .content {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -46,85 +64,119 @@
         </nav>
         <!-- End Navigation Bar -->
       </header>
-
       <section>
-        <div>
-          <h2 class="collapsible">About Me</h2>
-          <div class="content">
-            <p>Brief introduction about yourself.</p>
-          </div>
 
-          <h2 class="collapsible">Education</h2>
+        <!-- Collapsible Sections -->
+
+        <!-- About Me -->
+        <div class="collapsible-section" id="about-me">
+          <h2>About Me</h2>
+          <div class="content">
+            <!-- About Me content -->
+            Plain text for about me goes here.
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="collapsible-section" id="education">
+          <h2>Education</h2>
           <div class="content">
             <ul>
               <li>Master's Degree in Computational Biomedicine</li>
               <li>Biochemistry and Molecular Biology</li>
             </ul>
           </div>
+        </div>
 
-          <h2 class="collapsible">Experience</h2>
+        <!-- Experience -->
+        <div class="collapsible-section" id="experience">
+          <h2>Experience</h2>
           <div class="content">
-            <p>Details of professional and freelance work.</p>
-          </div>
-
-          <h2 class="collapsible">Teaching</h2>
-          <div class="content">
-            <p>Overview of your teaching modules and contributions.</p>
-          </div>
-
-          <h2 class="collapsible">Conference Activities</h2>
-          <div class="content">
-            <ul>
-              <li><strong><a href="https://d3aconference.dk/">D3A Conference: Danish Digitalization, Data Science and AI 1.0</a></strong> <br><em>Date</em>: 1-2 February, 2024, <em>Location</em>: Nyborg, Denmark</li>
-              <!-- Other conferences as listed in the index.md file -->
-            </ul>
-          </div>
-
-          <h2 class="collapsible">Workshops Attended</h2>
-          <div class="content">
-            <ul>
-              <li><strong><a href="https://www.zitilite.com/">AI Workshop: Leverage Generative AI in Research and Education</a></strong> <br><em>Date</em>: 22nd of January, 2024</li>
-              <!-- Other workshops -->
-            </ul>
-          </div>
-
-          <h2 class="collapsible">Courses Taught</h2>
-          <div class="content">
-            <ul>
-              <li><strong><a href="https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb834&lang=en">BMB834: Protein Structure, Dynamics, and Modelling</a></strong> <br><em>Term</em>: Spring 2024</li>
-              <!-- Other courses -->
-            </ul>
-          </div>
-
-          <h2 class="collapsible">Connect with Me</h2>
-          <div class="content">
-            <ul>
-              <li><a href="https://twitter.com/jacobfh">Twitter</a></li>
-              <li><a href="https://www.linkedin.com/in/jacobfh/">LinkedIn</a></li>
-            </ul>
+            Details of professional and freelance work.
           </div>
         </div>
-      </section>
 
+        <!-- Teaching -->
+        <div class="collapsible-section" id="teaching">
+          <h2>Teaching</h2>
+          <div class="content">
+            Overview of teaching modules and contributions.
+          </div>
+        </div>
+
+        <!-- Conference Activities -->
+        <div class="collapsible-section" id="conference-activities">
+          <h2>Conference Activities</h2>
+          <div class="content">
+            <!-- Conference activities details -->
+            Conference activities information goes here.
+          </div>
+        </div>
+
+        <!-- Workshops Attended -->
+        <div class="collapsible-section" id="workshops-attended">
+          <h2>Workshops Attended</h2>
+          <div class="content">
+            <!-- Workshops information -->
+            Workshop details go here.
+          </div>
+        </div>
+
+        <!-- Courses Taught -->
+        <div class="collapsible-section" id="courses-taught">
+          <h2>Courses Taught</h2>
+          <div class="content">
+            <!-- Courses content -->
+            Courses taught information goes here.
+          </div>
+        </div>
+
+        <!-- Connect with Me -->
+        <div class="collapsible-section" id="connect-with-me">
+          <h2>Connect with Me</h2>
+          <div class="content">
+            <!-- Social media links, etc. -->
+            Connect with me information goes here.
+          </div>
+        </div>
+
+      </section>
       <footer>
-        <p>&copy; 2024 Jacob Fredegaard Hansen</p>
+        {% if site.github.is_project_page %}
+        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
+        {% endif %}
       </footer>
     </div>
-
-    <!-- JavaScript to toggle collapsible sections -->
+    
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
-      var coll = document.getElementsByClassName("collapsible");
-      for (var i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          var content = this.nextElementSibling;
-          if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-          } else {
-            content.style.maxHeight = content.scrollHeight + "px";
+      // Smooth scrolling for navigation
+      document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
           }
         });
-      }
+      });
+
+      // Collapsible sections logic
+      document.querySelectorAll('.collapsible-section h2').forEach(title => {
+        title.addEventListener('click', function() {
+          const content = this.nextElementSibling;
+          content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+      });
+
+      // Initially collapse all sections
+      document.querySelectorAll('.collapsible-section .content').forEach(content => {
+        content.style.display = 'none';
+      });
     </script>
   </body>
 </html>
