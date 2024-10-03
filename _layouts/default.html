@@ -11,6 +11,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     {% include head-custom.html %}
+    <style>
+      /* Styles for the collapsible sections */
+      .collapsible-section h2 {
+        cursor: pointer; /* Change cursor to pointer */
+        padding: 10px;
+        background-color: #f1f1f1;
+        border: 1px solid #ddd;
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      /* Hover effect on the section titles */
+      .collapsible-section h2:hover {
+        background-color: #e0e0e0; /* Lighter background on hover */
+      }
+
+      /* Initially hide content */
+      .collapsible-section .content {
+        display: none; /* Hidden by default */
+        padding: 10px;
+        border-left: 2px solid #ddd;
+        background-color: #f9f9f9;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -50,13 +73,16 @@
       <section>
 
         <!-- Collapsible Sections -->
+
+        <!-- About Me -->
         <div class="collapsible-section" id="about-me">
           <h2>About Me</h2>
           <div class="content">
-            <!-- About me content goes here -->
+            <!-- About Me content here -->
           </div>
         </div>
 
+        <!-- Education -->
         <div class="collapsible-section" id="education">
           <h2>Education</h2>
           <div class="content">
@@ -67,6 +93,7 @@
           </div>
         </div>
 
+        <!-- Experience -->
         <div class="collapsible-section" id="experience">
           <h2>Experience</h2>
           <div class="content">
@@ -74,7 +101,45 @@
           </div>
         </div>
 
-        <!-- Additional collapsible sections follow the same pattern -->
+        <!-- Teaching -->
+        <div class="collapsible-section" id="teaching">
+          <h2>Teaching</h2>
+          <div class="content">
+            Overview of teaching modules and contributions.
+          </div>
+        </div>
+
+        <!-- Conference Activities -->
+        <div class="collapsible-section" id="conference-activities">
+          <h2>Conference Activities</h2>
+          <div class="content">
+            <!-- Conference Activities content -->
+          </div>
+        </div>
+
+        <!-- Workshops Attended -->
+        <div class="collapsible-section" id="workshops-attended">
+          <h2>Workshops Attended</h2>
+          <div class="content">
+            <!-- Workshops content -->
+          </div>
+        </div>
+
+        <!-- Courses Taught -->
+        <div class="collapsible-section" id="courses-taught">
+          <h2>Courses Taught</h2>
+          <div class="content">
+            <!-- Courses content -->
+          </div>
+        </div>
+
+        <!-- Connect with Me -->
+        <div class="collapsible-section" id="connect-with-me">
+          <h2>Connect with Me</h2>
+          <div class="content">
+            <!-- Social media links, etc. -->
+          </div>
+        </div>
 
       </section>
       <footer>
