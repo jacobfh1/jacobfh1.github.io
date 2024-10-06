@@ -56,11 +56,13 @@ nav {
   }
   
   .fade-in-section {
-    opacity: 0; /* Start invisible */
-    transition: opacity 0.5s ease-in-out; /* Transition for fading */
+    opacity: 0;  /* Initially hidden */
+    transform: translateY(20px);  /* Slightly translate down */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;  /* Smooth transition */
   }
   
   .fade-in-section.is-visible {
-    opacity: 1; /* Fully visible */
+    opacity: 1;  /* Visible */
+    transform: translateY(0);  /* Reset position */
   }
   
