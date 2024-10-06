@@ -51,7 +51,6 @@
           <li><a href="#conference-activities">Conference Activities</a></li>
           <li><a href="#workshops-attended">Workshops Attended</a></li>
           <li><a href="#courses-taught">Courses Taught</a></li>
-          <li><a href="#connect-with-me">Connect with Me</a></li>
         </ul>
       </nav>
       <!-- End Navigation Bar -->
@@ -99,21 +98,29 @@
     document.querySelectorAll('.collapsible-workshops .content').forEach(content => {
       content.style.display = 'none';
     });
-
-    // Fade-in effect for sections
-    document.addEventListener('DOMContentLoaded', function() {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible'); // Add class when in view
-          }
-        });
-      });
-
-      document.querySelectorAll('.fade-in-section').forEach(section => {
-        observer.observe(section); // Observe each section
-      });
-    });
   </script>    
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const sections = document.querySelectorAll('.fade-in-section'); // Select sections with the fade-in effect
+    
+        function checkVisibility() {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+    
+                // Check if section is in the viewport
+                if (rect.top <= windowHeight && rect.bottom >= 0) {
+                    section.classList.add('visible'); // Add visible class to fade in
+                } else {
+                    section.classList.remove('visible'); // Remove visible class to fade out
+                }
+            });
+        }
+    
+        // Check visibility on scroll and load
+        window.addEventListener('scroll', checkVisibility);
+        checkVisibility(); // Initial check on page load
+    });
+    </script>    
 </body>
 </html>

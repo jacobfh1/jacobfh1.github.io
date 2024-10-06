@@ -51,13 +51,11 @@ nav {
   }
 }
 
-.fade-in-section {
-  opacity: 0; /* Initially hidden */
-  transform: translateY(20px); /* Slightly translate down */
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth transition */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
 
-  &.is-visible {
-    opacity: 1; /* Visible */
-    transform: translateY(0); /* Reset position */
-  }
+.fade-in.visible {
+    opacity: 1;
 }
