@@ -9,6 +9,8 @@ description: Jacob's Online Portfolio
 
 {% include fade-in-section.html title="About Me" %}
 Brief introduction about yourself.
+<!-- Adding ID for scrolling -->
+<div id="about-me"></div>
 
 ---
 
@@ -16,16 +18,22 @@ Brief introduction about yourself.
 {% include fade-in-section.html title="Education" %}
 - Master's Degree in Computational Biomedicine
 - Biochemistry and Molecular Biology
+<!-- Adding ID for scrolling -->
+<div id="education"></div>
 
 ---
 
 {% include fade-in-section.html title="Experience" %}
 Details of professional and freelance work.
+<!-- Adding ID for scrolling -->
+<div id="experience"></div>
 
 ---
 
 {% include fade-in-section.html title="Teaching" %}
 Overview of your teaching modules and contributions.
+<!-- Adding ID for scrolling -->
+<div id="teaching"></div>
 
 ---
 
