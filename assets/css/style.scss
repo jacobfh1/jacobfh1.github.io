@@ -55,14 +55,14 @@ nav {
     color: #0077b5; /* LinkedIn blue */
   }
   
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px); /* Optional: Adds a slight upward movement */
-    transition: opacity 2s ease, transform 2s ease; /* Transition effect */
+  .fade-in-section {
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Slightly move down */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
   }
   
-  .fade-in.visible {
+  .fade-in-section.is-visible {
     opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Reset the upward movement */
+    transform: translateY(0); /* Reset position */
   }
   

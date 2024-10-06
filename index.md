@@ -9,6 +9,14 @@ description: Jacob's Online Portfolio
 ## About Me {#about-me}
 Brief introduction about yourself.
 
+<div class="fade-in-section">
+## About Me {#about-me}
+<h2 class="collapsible">About Me</h2>
+<div class="content">
+  Brief introduction about yourself.
+</div>
+</div>
+
 ---
 
 ## Education {#education}
