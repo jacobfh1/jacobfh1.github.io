@@ -6,13 +6,12 @@ description: Jacob's Online Portfolio
 
 # Jacob's Portfolio
 
-<!-- Adding ID for scrolling -->
-<div id="about-me"></div>
 {% include fade-in-section.html title="About Me" %}
 Brief introduction about yourself.
+<!-- Adding ID for scrolling -->
+<div id="about-me"></div>
 
 ---
-
 
 {% include fade-in-section.html title="Education" %}
 - Master's Degree in Computational Biomedicine
