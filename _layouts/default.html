@@ -1,128 +1,119 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% seo %}
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    
-    <!-- Font Awesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
-    {% include head-custom.html %}
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+  {% seo %}
+  <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+  {% include head-custom.html %}
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
 
-        {% if site.logo %}
-          <img src="{{site.logo | relative_url}}" alt="Logo" />
-        {% endif %}
+      {% if site.logo %}
+        <img src="{{site.logo | relative_url}}" alt="Logo" />
+      {% endif %}
 
-        <!-- Social media icons under the logo -->
-        <div class="social-icons">
-          <a href="https://twitter.com/jacobfh" target="_blank">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/jacobfh/" target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/jacobfh1" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://jacobfh.com/" target="_blank"> 
-            <i class="fas fa-globe"></i> <!-- Use a globe icon for website -->
-          </a>
-        </div>
-        
-        <!-- <p>{{ site.description | default: site.github.project_tagline }}</p>
+      <!-- Social media icons under the logo -->
+      <div class="social-icons">
+        <a href="https://twitter.com/jacobfh" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/jacobfh/" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/jacobfh1" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://jacobfh.com/" target="_blank"> 
+          <i class="fas fa-globe"></i> <!-- Use a globe icon for website -->
+        </a>
+      </div>
 
-        {% if site.github.is_project_page %}
-        <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
-        {% endif %}
+      <!-- Navigation Bar -->
+      <nav>
+        <ul>
+          <li><a href="#about-me">About Me</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#conference-activities">Conference Activities</a></li>
+          <li><a href="#workshops-attended">Workshops Attended</a></li>
+          <li><a href="#courses-taught">Courses Taught</a></li>
+          <li><a href="#connect-with-me">Connect with Me</a></li>
+        </ul>
+      </nav>
+      <!-- End Navigation Bar -->
+    </header>
 
-        {% if site.github.is_user_page %}
-        <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
-        {% endif %}   -->
+    <!-- Main Content Section -->
+    <section class="fade-in">
+      {{ content }}
+    </section>
 
-        <!-- Navigation Bar -->
-        <nav>
-          <ul>
-            <li><a href="#about-me">About Me</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#teaching">Teaching</a></li>
-            <li><a href="#conference-activities">Conference Activities</a></li>
-            <li><a href="#workshops-attended">Workshops Attended</a></li>
-            <li><a href="#courses-taught">Courses Taught</a></li>
-            <li><a href="#connect-with-me">Connect with Me</a></li>
-          </ul>
-        </nav>
-        <!-- End Navigation Bar -->
-      </header>
-      <section class="fade-in">
+    <footer>
+      {% if site.github.is_project_page %}
+      <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
+      {% endif %}
+      <p>&copy; 2024 Jacob Fredegaard Hansen</p>
+    </footer>
+  </div>
 
-        {{ content }}
+  <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  <script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-      </section>
-      <footer>
-        {% if site.github.is_project_page %}
-        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %}
-      </footer>
-    </div>
-    
-    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
-    <script>
-      // Smooth scrolling for navigation
-      document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const targetSection = document.querySelector(targetId);
-          if (targetSection) {
-            targetSection.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
+    // Collapsible section logic for Workshops only
+    document.querySelectorAll('.collapsible-workshops h2').forEach(title => {
+      title.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    // Initially collapse the Workshops section
+    document.querySelectorAll('.collapsible-workshops .content').forEach(content => {
+      content.style.display = 'none';
+    });
+
+    // Fade-in effect for sections
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible'); // Add class when in view
           }
         });
       });
 
-      // Collapsible section logic for Workshops only
-      document.querySelectorAll('.collapsible-workshops h2').forEach(title => {
-        title.addEventListener('click', function() {
-          const content = this.nextElementSibling;
-          content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        });
+      document.querySelectorAll('.fade-in-section').forEach(section => {
+        observer.observe(section); // Observe each section
       });
-
-      // Initially collapse the Workshops section
-      document.querySelectorAll('.collapsible-workshops .content').forEach(content => {
-        content.style.display = 'none';
-      });
-    </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible'); // Add class when in view
-            }
-          });
-        });
-    
-        document.querySelectorAll('.fade-in-section').forEach(section => {
-          observer.observe(section); // Observe each section
-        });
-      });
-    </script>    
-    <script src="{{ '/assets/js/fade-in.js' | relative_url }}"></script>
-  </body>
+    });
+  </script>    
+</body>
 </html>
