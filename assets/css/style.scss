@@ -31,7 +31,8 @@ nav {
   
   .social-icons a {
     margin: 0 10px;
-    color: #000; /* Adjust color for Font Awesome icons */
+    color: #000; /* Default color for icons */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
   }
   
   .social-icons img {
@@ -40,6 +41,17 @@ nav {
   }
   
   .social-icons a:hover {
+    color: #0077b5; /* Default hover color (LinkedIn blue) */
+  }
+  
+  /* Specific hover effect for Twitter */
+  .social-icons a[href*="twitter.com"]:hover {
+    color: #1DA1F2; /* Twitter blue for hover effect */
+  }
+  
+  /* Specific hover effect for LinkedIn */
+  .social-icons a[href*="linkedin.com"]:hover {
     color: #0077b5; /* LinkedIn blue for hover effect */
   }
+  
   
