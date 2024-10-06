@@ -118,19 +118,20 @@
           threshold: 0.1 // Adjust this value based on when you want the effect to trigger
         };
     
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible'); // Add the visible class
-              observer.unobserve(entry.target); // Stop observing once visible
+           if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            } else {
+              entry.target.classList.remove('is-visible');
             }
           });
-        }, options);
-    
-        fadeInElements.forEach(element => {
-          observer.observe(element); // Observe each fade-in element
         });
-      });
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+          observer.observe(section); 
+        });
+
     </script>    
     <script src="{{ '/assets/js/fade-in.js' | relative_url }}"></script>
   </body>

@@ -9,6 +9,7 @@ description: Jacob's Online Portfolio
 
 {% include fade-in-section.html title="About Me" %}
 Brief introduction about yourself.
+
 ---
 
 
