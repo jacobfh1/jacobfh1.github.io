@@ -88,17 +88,6 @@ _Department_: [Department of Biochemistry and Molecular Biology, University of S
 
 ---
 
-## Connect with Me {#connect-with-me}
-- [Twitter](https://twitter.com/jacobfh)
-- [LinkedIn](https://www.linkedin.com/in/jacobfh/)
-
-<div class="social-icons">
-  <a href="https://twitter.com/jacobfh" target="_blank"><i class="fab fa-twitter"></i></a>
-  <a href="https://www.linkedin.com/in/jacobfh/" target="_blank"><i class="fab fa-linkedin"></i></a>
-</div>
-
----
-
 <footer>
 <p>&copy; 2024 Jacob Fredegaard Hansen</p>
 </footer>
