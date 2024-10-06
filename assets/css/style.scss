@@ -55,3 +55,24 @@ nav {
     color: #0077b5; /* LinkedIn blue */
   }
   
+  html, body {
+    height: 100%; /* Set full height for body */
+    margin: 0; /* Remove default margins */
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+  }
+  
+  section {
+    flex: 1; /* Allow section to grow and fill available space */
+  }
+  
+  footer {
+    background: #f8f8f8; /* Optional: Add a background color */
+    padding: 10px; /* Optional: Add some padding */
+    text-align: center; /* Center text in footer */
+  }
+  
