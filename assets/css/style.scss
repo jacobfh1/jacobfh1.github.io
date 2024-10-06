@@ -4,65 +4,63 @@
 @import "jekyll-theme-minimal";
 
 nav {
-    margin: 20px 0; /* Adjust the spacing */
-  }
+  margin: 20px 0; /* Adjust the spacing */
   
-  nav ul {
+  ul {
     list-style-type: none; /* Remove bullets */
     padding: 0; /* Remove padding */
   }
   
-  nav li {
+  li {
     margin-bottom: 10px; /* Space between links */
   }
   
-  nav a {
+  a {
     text-decoration: none; /* Remove underline */
     color: #333; /* Set link color */
+    
+    &:hover {
+      text-decoration: underline; /* Underline on hover */
+    }
   }
-  
-  nav a:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
- 
-  .social-icons {
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  .social-icons a {
+}
+
+.social-icons {
+  text-align: center;
+  margin-top: 10px;
+
+  a {
     margin: 0 10px;
     color: #000; /* Default color for icons */
     transition: color 0.3s ease; /* Smooth transition */
+    
+    &:hover {
+      color: #0077b5; /* Default LinkedIn blue as fallback */
+    }
+    
+    /* Specific hover color for Twitter */
+    &[href*="twitter.com"]:hover i {
+      color: #1DA1F2; /* Twitter blue */
+    }
+    
+    /* Specific hover color for LinkedIn */
+    &[href*="linkedin.com"]:hover i {
+      color: #0077b5; /* LinkedIn blue */
+    }
   }
-  
-  .social-icons i {
+
+  i {
     font-size: 30px; /* Size of Font Awesome icons */
   }
-  
-  /* Hover effects */
-  .social-icons a:hover {
-    color: #0077b5; /* Default LinkedIn blue as fallback */
+}
+
+.fade-in-section {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(20px); /* Slightly translate down */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth transition */
+
+  &.is-visible {
+    opacity: 1; /* Visible */
+    transform: translateY(0); /* Reset position */
   }
-  
-  /* Specific hover color for Twitter */
-  .social-icons a[href*="twitter.com"]:hover i {
-    color: #1DA1F2; /* Twitter blue */
-  }
-  
-  /* Specific hover color for LinkedIn */
-  .social-icons a[href*="linkedin.com"]:hover i {
-    color: #0077b5; /* LinkedIn blue */
-  }
-  
-  .fade-in-section {
-    opacity: 0;  /* Initially hidden */
-    transform: translateY(20px);  /* Slightly translate down */
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;  /* Smooth transition */
-  }
-  
-  .fade-in-section.is-visible {
-    opacity: 1;  /* Visible */
-    transform: translateY(0);  /* Reset position */
-  }
-  
+}
