@@ -21,6 +21,11 @@
           <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
 
+        <div class="social-icons">
+          <a href="https://twitter.com/jacobfh" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/jacobfh/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+
         <p>{{ site.description | default: site.github.project_tagline }}</p>
 
         {% if site.github.is_project_page %}
@@ -49,7 +54,7 @@
       <section>
 
         {{ content }}
-        
+
       </section>
       <footer>
         {% if site.github.is_project_page %}
