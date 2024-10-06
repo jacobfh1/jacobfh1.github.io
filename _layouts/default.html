@@ -1,42 +1,24 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html lang="{{ site.lang | default: "en-US" }}">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% seo %}
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     {% include head-custom.html %}
-    <style>
-      /* Collapsible section titles - cursor change and hover effect for Workshops only */
-      .collapsible-workshops h2 {
-        cursor: pointer; /* Change cursor to pointer */
-        color: black; /* Default color */
-        transition: color 0.3s ease; /* Smooth transition for hover effect */
-      }
-
-      /* Hover effect for Workshops: Light blue text */
-      .collapsible-workshops h2:hover {
-        color: lightblue;
-      }
-
-      /* Hide Workshops content by default */
-      .collapsible-workshops .content {
-        display: none;
-      }
-    </style>
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1><a href="{{ '/' | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
 
         {% if site.logo %}
-          <img src="{{ site.logo | relative_url }}" alt="Logo" />
+          <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
 
         <p>{{ site.description | default: site.github.project_tagline }}</p>
@@ -66,67 +48,8 @@
       </header>
       <section>
 
-        <!-- Include content from index.md -->
-        {% capture about_me %}
-        {% include_relative index.md %}
-        {% endcapture %}
-        <div id="about-me">
-          <h2>About Me</h2>
-          <div class="content">
-            {{ about_me | markdownify }}
-          </div>
-        </div>
-
-        <div id="education">
-          <h2>Education</h2>
-          <div class="content">
-            {{ about_me | markdownify }}
-          </div>
-        </div>
-
-        <div id="experience">
-          <h2>Experience</h2>
-          <div class="content">
-            {{ about_me | markdownify }}
-          </div>
-        </div>
-
-        <div id="teaching">
-          <h2>Teaching</h2>
-          <div class="content">
-            {{ about_me | markdownify }}
-          </div>
-        </div>
-
-        <div id="conference-activities">
-          <h2>Conference Activities</h2>
-          <div class="content">
-            {{ about_me | markdownify }}
-          </div>
-        </div>
-
-        <!-- Workshops Attended (Collapsible) -->
-        <div class="collapsible-workshops" id="workshops-attended">
-          <h2>Workshops Attended</h2>
-          <div class="content">
-            {{ about_me | markdownify }}
-          </div>
-        </div>
-
-        <div id="courses-taught">
-          <h2>Courses Taught</h2>
-          <div class="content">
-            {{ about_me | markdownify }}
-          </div>
-        </div>
-
-        <div id="connect-with-me">
-          <h2>Connect with Me</h2>
-          <div class="content">
-            {{ about_me | markdownify }}
-          </div>
-        </div>
-
+        {{ content }}
+        
       </section>
       <footer>
         {% if site.github.is_project_page %}
@@ -135,7 +58,7 @@
       </footer>
     </div>
     
-    <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
       // Smooth scrolling for navigation
       document.querySelectorAll('nav a').forEach(anchor => {
