@@ -12,20 +12,20 @@
     <![endif]-->
     {% include head-custom.html %}
     <style>
-      /* Collapsible section titles - cursor change and hover effect */
-      .collapsible-section h2 {
+      /* Collapsible section titles - cursor change and hover effect for Workshops only */
+      .collapsible-workshops h2 {
         cursor: pointer; /* Change cursor to pointer */
         color: black; /* Default color */
         transition: color 0.3s ease; /* Smooth transition for hover effect */
       }
 
-      /* Hover effect: Light blue text */
-      .collapsible-section h2:hover {
+      /* Hover effect for Workshops: Light blue text */
+      .collapsible-workshops h2:hover {
         color: lightblue;
       }
 
-      /* Hide content by default */
-      .collapsible-section .content {
+      /* Hide Workshops content by default */
+      .collapsible-workshops .content {
         display: none;
       }
     </style>
@@ -66,10 +66,8 @@
       </header>
       <section>
 
-        <!-- Collapsible Sections -->
-
         <!-- About Me -->
-        <div class="collapsible-section" id="about-me">
+        <div id="about-me">
           <h2>About Me</h2>
           <div class="content">
             <!-- About Me content -->
@@ -78,7 +76,7 @@
         </div>
 
         <!-- Education -->
-        <div class="collapsible-section" id="education">
+        <div id="education">
           <h2>Education</h2>
           <div class="content">
             <ul>
@@ -89,7 +87,7 @@
         </div>
 
         <!-- Experience -->
-        <div class="collapsible-section" id="experience">
+        <div id="experience">
           <h2>Experience</h2>
           <div class="content">
             Details of professional and freelance work.
@@ -97,7 +95,7 @@
         </div>
 
         <!-- Teaching -->
-        <div class="collapsible-section" id="teaching">
+        <div id="teaching">
           <h2>Teaching</h2>
           <div class="content">
             Overview of teaching modules and contributions.
@@ -105,7 +103,7 @@
         </div>
 
         <!-- Conference Activities -->
-        <div class="collapsible-section" id="conference-activities">
+        <div id="conference-activities">
           <h2>Conference Activities</h2>
           <div class="content">
             <!-- Conference activities details -->
@@ -113,8 +111,8 @@
           </div>
         </div>
 
-        <!-- Workshops Attended -->
-        <div class="collapsible-section" id="workshops-attended">
+        <!-- Workshops Attended (Collapsible) -->
+        <div class="collapsible-workshops" id="workshops-attended">
           <h2>Workshops Attended</h2>
           <div class="content">
             <!-- Workshops information -->
@@ -123,7 +121,7 @@
         </div>
 
         <!-- Courses Taught -->
-        <div class="collapsible-section" id="courses-taught">
+        <div id="courses-taught">
           <h2>Courses Taught</h2>
           <div class="content">
             <!-- Courses content -->
@@ -132,7 +130,7 @@
         </div>
 
         <!-- Connect with Me -->
-        <div class="collapsible-section" id="connect-with-me">
+        <div id="connect-with-me">
           <h2>Connect with Me</h2>
           <div class="content">
             <!-- Social media links, etc. -->
@@ -165,16 +163,16 @@
         });
       });
 
-      // Collapsible sections logic
-      document.querySelectorAll('.collapsible-section h2').forEach(title => {
+      // Collapsible section logic for Workshops only
+      document.querySelectorAll('.collapsible-workshops h2').forEach(title => {
         title.addEventListener('click', function() {
           const content = this.nextElementSibling;
           content.style.display = content.style.display === 'block' ? 'none' : 'block';
         });
       });
 
-      // Initially collapse all sections
-      document.querySelectorAll('.collapsible-section .content').forEach(content => {
+      // Initially collapse the Workshops section
+      document.querySelectorAll('.collapsible-workshops .content').forEach(content => {
         content.style.display = 'none';
       });
     </script>
