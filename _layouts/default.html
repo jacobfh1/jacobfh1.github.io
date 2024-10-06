@@ -109,29 +109,19 @@
       });
     </script>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const fadeInElements = document.querySelectorAll('.fade-in');
-    
-        const options = {
-          root: null,
-          rootMargin: '0px',
-          threshold: 0.1 // Adjust this value based on when you want the effect to trigger
-        };
-    
+      document.addEventListener('DOMContentLoaded', function() {
         const observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
-           if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-            } else {
-              entry.target.classList.remove('is-visible');
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible'); // Add class when in view
             }
           });
         });
-
+    
         document.querySelectorAll('.fade-in-section').forEach(section => {
-          observer.observe(section); 
+          observer.observe(section); // Observe each section
         });
-
+      });
     </script>    
     <script src="{{ '/assets/js/fade-in.js' | relative_url }}"></script>
   </body>
