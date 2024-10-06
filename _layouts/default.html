@@ -66,7 +66,7 @@
         </nav>
         <!-- End Navigation Bar -->
       </header>
-      <section>
+      <section class="fade-in">
 
         {{ content }}
 
@@ -108,5 +108,29 @@
         content.style.display = 'none';
       });
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const fadeInElements = document.querySelectorAll('.fade-in');
+    
+        const options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1 // Adjust this value based on when you want the effect to trigger
+        };
+    
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible'); // Add the visible class
+              observer.unobserve(entry.target); // Stop observing once visible
+            }
+          });
+        }, options);
+    
+        fadeInElements.forEach(element => {
+          observer.observe(element); // Observe each fade-in element
+        });
+      });
+    </script>    
   </body>
 </html>
