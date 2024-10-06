@@ -6,35 +6,32 @@ description: Jacob's Online Portfolio
 
 # Jacob's Portfolio
 
+<div id="about-me"></div>
 {% include fade-in-section.html title="About Me" %}
 Brief introduction about yourself.
-<!-- Adding ID for scrolling -->
-<div id="about-me"></div>
 
 ---
 
+<div id="education"></div>
 {% include fade-in-section.html title="Education" %}
 - Master's Degree in Computational Biomedicine
 - Biochemistry and Molecular Biology
-<!-- Adding ID for scrolling -->
-<div id="education"></div>
 
 ---
 
+<div id="experience"></div>
 {% include fade-in-section.html title="Experience" %}
 Details of professional and freelance work.
-<!-- Adding ID for scrolling -->
-<div id="experience"></div>
 
 ---
 
+<div id="teaching"></div>
 {% include fade-in-section.html title="Teaching" %}
 Overview of your teaching modules and contributions.
-<!-- Adding ID for scrolling -->
-<div id="teaching"></div>
 
 ---
 
+<div id="conference-activities"></div>
 {% include fade-in-section.html title="Conference Activities" %}
 **[D3A Conference: Danish Digitalization, Data Science and AI 1.0](https://d3aconference.dk/)**  
 _Date_: 1-2 February, 2024  
@@ -70,7 +67,7 @@ _Location_: Boston, MA, USA
 
 ---
 
-
+<div id="workshops-attended"></div>
 {% include fade-in-section.html title="Workshops Attended" %}
 **[AI Workshop: Leverage Generative AI in Research and Education](https://www.zitilite.com/)**  
 _Date_: 22nd of January, 2024  
@@ -82,6 +79,7 @@ _Organized by_: Center for Health Data Science (HeaDS)
 
 ---
 
+<div id="courses-taught"></div>
 {% include fade-in-section.html title="Courses Taught" %}
 **[BMB834: Protein Structure, Dynamics, and Modelling](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb834&lang=en)**  
 _Term_: Spring 2024  

@@ -61,10 +61,3 @@ nav {
     transform: translateY(0); /* Reset position */
   }
 }
-
-/* Add this to your CSS file (style.scss or equivalent) */
-section {
-    padding-top: 60px; /* Adjust this value to match the height of your navigation bar */
-    margin-top: -60px; /* Pull the section back up */
-  }
-  
