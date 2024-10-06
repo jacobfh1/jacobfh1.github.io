@@ -24,6 +24,7 @@ nav {
   nav a:hover {
     text-decoration: underline; /* Underline on hover */
   }
+ 
   .social-icons {
     text-align: center;
     margin-top: 10px;
@@ -32,26 +33,25 @@ nav {
   .social-icons a {
     margin: 0 10px;
     color: #000; /* Default color for icons */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    transition: color 0.3s ease; /* Smooth transition */
   }
   
-  .social-icons img {
-    width: 30px;
-    height: 30px;
+  .social-icons i {
+    font-size: 30px; /* Size of Font Awesome icons */
   }
   
+  /* Hover effects */
   .social-icons a:hover {
-    color: #0077b5; /* Default hover color (LinkedIn blue) */
+    color: #0077b5; /* Default LinkedIn blue as fallback */
   }
   
-  /* Specific hover effect for Twitter */
-  .social-icons a[href*="twitter.com"]:hover {
-    color: #1DA1F2; /* Twitter blue for hover effect */
+  /* Specific hover color for Twitter */
+  .social-icons a[href*="twitter.com"]:hover i {
+    color: #1DA1F2; /* Twitter blue */
   }
   
-  /* Specific hover effect for LinkedIn */
-  .social-icons a[href*="linkedin.com"]:hover {
-    color: #0077b5; /* LinkedIn blue for hover effect */
+  /* Specific hover color for LinkedIn */
+  .social-icons a[href*="linkedin.com"]:hover i {
+    color: #0077b5; /* LinkedIn blue */
   }
-  
   
