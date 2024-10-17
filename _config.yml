@@ -2,5 +2,8 @@ title: Jacob's Portfolio
 logo: /assets/img/IMG_1499.jpg
 description: Jacob's portfolio.
 show_downloads: true
-google_analytics:
+google_analytics: 
 theme: jekyll-theme-minimal
+markdown: kramdown
+kramdown:
+  input: GFM  # Use GitHub Flavored Markdown
