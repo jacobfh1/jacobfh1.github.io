@@ -170,12 +170,4 @@ _Organized by_: Zitilite
 
 **[Git & GitHub](https://heads.ku.dk/)**  
 _Date_: 16th of March, 2023  
-_Organized by_: University of Copenhagen
-
-</div>
-
----
-
-<footer>
-<p>&copy; 2024 Jacob Fredegaard Hansen</p>
-</footer>
+_

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% seo %}
-  <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/style.scss?v=" | append: site.github.build_revision | relative_url }}">
   
   <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,7 +22,7 @@
       <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
 
       {% if site.logo %}
-        <img src="{{site.logo | relative_url}}" alt="Logo" />
+        <img src="{{site.logo | relative_url}}" alt="{{ site.title | default: site.github.repository_name }} Logo" /> <!-- Updated alt text -->
       {% endif %}
 
       <!-- Social media icons under the logo -->
@@ -56,9 +56,9 @@
     </header>
 
     <!-- Main Content Section -->
-    <section class="fade-in">
+    <main class="fade-in"> <!-- Added <main> tag -->
       {{ content }}
-    </section>
+    </main>
 
     <footer>
       {% if site.github.is_project_page %}
@@ -68,10 +68,9 @@
     </footer>
   </div>
 
-<!-- Load scripts -->
-<script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
-<script src="{{ "/js/smooth-scroll.js" | relative_url }}"></script>
-<script src="{{ "/js/fade-in.js" | relative_url }}"></script>
-
+  <!-- Load scripts -->
+  <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  <script src="{{ "/assets/js/smooth-scroll.js" | relative_url }}"></script>
+  <script src="{{ "/assets/js/fade-in.js" | relative_url }}"></script>
 </body>
 </html>
