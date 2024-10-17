@@ -4,18 +4,17 @@ title: Jacob's Portfolio
 description: Jacob's Online Portfolio
 ---
 
-# Jacob's Portfolio
+<div id="about-me" class="fade-in-section" markdown="1">
+## About Me
 
-<div id="about-me" class="fade-in-section">
-{% include fade-in-section.html title="About Me" %}
 An outgoing and results-driven computational biologist passionate about the intersection of AI and bioinformatics, with a keen interest in protein design, modeling, and understanding protein structure-function relationships. Aiming to deepen expertise in applying deep learning techniques in bioinformatics. Seeking to contribute to innovative projects that explore biological systems and their applications in health and biosolutions. Thrives on problem-solving, interdisciplinary collaboration, and utilizing computational tools for a deeper understanding of biology. Experienced in developing containerized research tools for HPC environments and designing educational materials for BSc, MSc, and PhD students.
 </div>
 
 ---
 
-<div id="education" class="fade-in-section">
+<div id="education" class="fade-in-section" markdown="1">
 {% include fade-in-section.html title="Education" %}
-## Education
+### Education
 
 ### Master of Science, Computational Biomedicine  
 **University of Southern Denmark** — Odense  
@@ -38,9 +37,9 @@ _2017 – 2020_
 
 ---
 
-<div id="experience" class="fade-in-section">
+<div id="experience" class="fade-in-section" markdown="1">
 {% include fade-in-section.html title="Experience" %}
-## Experience
+### Experience
 
 ### Data Scientist in Computational Proteomics  
 **University of Southern Denmark** — Odense  
@@ -108,7 +107,7 @@ _2018 – 2022_
 
 ---
 
-<div id="teaching" class="fade-in-section">
+<div id="teaching" class="fade-in-section" markdown="1">
 {% include fade-in-section.html title="Teaching" %}
 **[BMB834: Protein Structure, Dynamics, and Modelling](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb834&lang=en)**  
 _Term_: Spring 2024  
@@ -125,7 +124,7 @@ _Department_: [Department of Biochemistry and Molecular Biology, University of S
 
 ---
 
-<div id="conference-activities" class="fade-in-section">
+<div id="conference-activities" class="fade-in-section" markdown="1">
 {% include fade-in-section.html title="Conference Activities" %}
 **[D3A Conference: Danish Digitalization, Data Science and AI 1.0](https://d3aconference.dk/)**  
 _Date_: 1-2 February, 2024  
@@ -162,15 +161,17 @@ _Location_: Boston, MA, USA
 
 ---
 
-<div id="workshops-attended" class="fade-in-section">
+<div id="workshops-attended" class="fade-in-section" markdown="1">
 {% include fade-in-section.html title="Workshops Attended" %}
+
 **[AI Workshop: Leverage Generative AI in Research and Education](https://www.zitilite.com/)**  
 _Date_: 22nd of January, 2024  
 _Organized by_: Zitilite
 
 **[Git & GitHub](https://heads.ku.dk/)**  
-_Date_: 16th of January, 2023  
-_Organized by_: Center for Health Data Science (HeaDS)
+_Date_: 16th of March, 2023  
+_Organized by_: University of Copenhagen
+
 </div>
 
 ---
