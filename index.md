@@ -6,13 +6,14 @@ description: Jacob's Online Portfolio
 
 # Jacob's Portfolio
 
-<div id="about-me" class="fade-in-section fade-in"></div>
+<div id="about-me" class="fade-in-section">
 {% include fade-in-section.html title="About Me" %}
 An outgoing and results-driven computational biologist passionate about the intersection of AI and bioinformatics, with a keen interest in protein design, modeling, and understanding protein structure-function relationships. Aiming to deepen expertise in applying deep learning techniques in bioinformatics. Seeking to contribute to innovative projects that explore biological systems and their applications in health and biosolutions. Thrives on problem-solving, interdisciplinary collaboration, and utilizing computational tools for a deeper understanding of biology. Experienced in developing containerized research tools for HPC environments and designing educational materials for BSc, MSc, and PhD students.
+</div>
 
 ---
 
-<div id="education" class="fade-in-section fade-in"></div>
+<div id="education" class="fade-in-section">
 {% include fade-in-section.html title="Education" %}
 ## Education
 
@@ -33,11 +34,11 @@ _2017 – 2020_
 - Won a gold medal in the iGEM Competition, the world's largest synthetic biology contest, through an extracurricular SDU Talent Program, accounting for an additional 30 ECTS points.
 - Gained experience in quantitative transcriptomic data analysis of bulk RNA-seq data using R across various projects, supervised by Prof. Susanne Mandrup.
 - Managed and facilitated projects and events as chair of the department’s student association.
-
+</div>
 
 ---
 
-<div id="experience" class="fade-in-section fade-in"></div>
+<div id="experience" class="fade-in-section">
 {% include fade-in-section.html title="Experience" %}
 ## Experience
 
@@ -103,11 +104,11 @@ _2018 – 2022_
 **Duties included:**
 - Assisted with examinations and daily IT-related inquiries while ensuring GDPR compliance in handling personal information.
 - Supported digital media projects in FabLab.
-
+</div>
 
 ---
 
-<div id="teaching" class="fade-in-section fade-in"></div>
+<div id="teaching" class="fade-in-section">
 {% include fade-in-section.html title="Teaching" %}
 **[BMB834: Protein Structure, Dynamics, and Modelling](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb834&lang=en)**  
 _Term_: Spring 2024  
@@ -120,10 +121,11 @@ _Department_: [Department of Biochemistry and Molecular Biology, University of S
 **[BMB533: Molecular Biology and Protein Chemistry](https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&internkode=bmb533&lang=en)**  
 _Term_: Autumn 2020-'21  
 _Department_: [Department of Biochemistry and Molecular Biology, University of Southern Denmark](https://www.sdu.dk/en/om_sdu/institutter_centre/bmb_biokemi_og_molekylaer_biologi)
+</div>
 
 ---
 
-<div id="conference-activities" class="fade-in-section fade-in"></div>
+<div id="conference-activities" class="fade-in-section">
 {% include fade-in-section.html title="Conference Activities" %}
 **[D3A Conference: Danish Digitalization, Data Science and AI 1.0](https://d3aconference.dk/)**  
 _Date_: 1-2 February, 2024  
@@ -156,10 +158,11 @@ _Location_: Billund, Denmark
 **[iGEM Grand Jamboree 2019](https://jamboree.igem.org/)**  
 _Date_: October 31 - November 4, 2019  
 _Location_: Boston, MA, USA
+</div>
 
 ---
 
-<div id="workshops-attended" class="fade-in-section fade-in"></div>
+<div id="workshops-attended" class="fade-in-section">
 {% include fade-in-section.html title="Workshops Attended" %}
 **[AI Workshop: Leverage Generative AI in Research and Education](https://www.zitilite.com/)**  
 _Date_: 22nd of January, 2024  
@@ -168,6 +171,7 @@ _Organized by_: Zitilite
 **[Git & GitHub](https://heads.ku.dk/)**  
 _Date_: 16th of January, 2023  
 _Organized by_: Center for Health Data Science (HeaDS)
+</div>
 
 ---
 
