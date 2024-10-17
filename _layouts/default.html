@@ -50,7 +50,6 @@
           <li><a href="#teaching">Teaching</a></li>
           <li><a href="#conference-activities">Conference Activities</a></li>
           <li><a href="#workshops-attended">Workshops Attended</a></li>
-          <li><a href="#courses-taught">Courses Taught</a></li>
         </ul>
       </nav>
       <!-- End Navigation Bar -->
@@ -69,58 +68,10 @@
     </footer>
   </div>
 
-  <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
-  <script>
-    // Smooth scrolling for navigation
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        if (targetSection) {
-          targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
+<!-- Load scripts -->
+<script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+<script src="{{ "/js/smooth-scroll.js" | relative_url }}"></script>
+<script src="{{ "/js/fade-in.js" | relative_url }}"></script>
 
-    // Collapsible section logic for Workshops only
-    document.querySelectorAll('.collapsible-workshops h2').forEach(title => {
-      title.addEventListener('click', function() {
-        const content = this.nextElementSibling;
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
-      });
-    });
-
-    // Initially collapse the Workshops section
-    document.querySelectorAll('.collapsible-workshops .content').forEach(content => {
-      content.style.display = 'none';
-    });
-  </script>    
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const sections = document.querySelectorAll('.fade-in-section'); // Select sections with the fade-in effect
-    
-        function checkVisibility() {
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
-    
-                // Check if section is in the viewport
-                if (rect.top <= windowHeight && rect.bottom >= 0) {
-                    section.classList.add('visible'); // Add visible class to fade in
-                } else {
-                    section.classList.remove('visible'); // Remove visible class to fade out
-                }
-            });
-        }
-    
-        // Check visibility on scroll and load
-        window.addEventListener('scroll', checkVisibility);
-        checkVisibility(); // Initial check on page load
-    });
-    </script>    
 </body>
 </html>
