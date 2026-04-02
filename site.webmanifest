@@ -1,0 +1,16 @@
+{
+    "name": "Jacob Fredegaard Hansen",
+    "short_name": "JFH",
+    "description": "Bioinformatician and Data Science Specialist — computational protein design, drug discovery, and AI-driven pharmaceutical research.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0f1c",
+    "theme_color": "#06b6d4",
+    "icons": [
+        {
+            "src": "assets/favicon.svg",
+            "type": "image/svg+xml",
+            "sizes": "any"
+        }
+    ]
+}
