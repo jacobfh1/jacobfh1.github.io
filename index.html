@@ -32,6 +32,9 @@
     <link rel="preload" href="css/style.css" as="style">
     <link rel="preload" href="js/main.js" as="script">
 
+    <!-- 3Dmol.js for protein viewer -->
+    <script src="https://3Dmol.org/build/3Dmol-min.js" defer></script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,6 +93,12 @@
     <!-- Skip to content (accessibility) -->
     <a href="#about" class="skip-to-content">Skip to main content</a>
 
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
     <!-- Animated background canvas -->
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
@@ -110,6 +119,7 @@
                 <li><a href="#contributions" class="nav-link">Contributions</a></li>
                 <li><a href="#beyond" class="nav-link">Beyond the Lab</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#molecule" class="nav-link">3D Viewer</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -349,7 +359,7 @@
     <section class="section education-section" id="education">
         <div class="container">
             <h2 class="section-title reveal">Education</h2>
-            <div class="education-grid">
+            <div class="education-grid reveal-stagger">
                 <div class="education-card reveal">
                     <div class="education-year">2020 – 2022</div>
                     <h3>Master of Science</h3>
@@ -389,7 +399,7 @@
                 I teach to make the complex accessible. My courses blend bioinformatics, data science, and
                 real-world biomedical data — so students don't just learn theory, they build something they can use.
             </p>
-            <div class="teaching-grid">
+            <div class="teaching-grid reveal-stagger">
                 <div class="teaching-card reveal">
                     <div class="teaching-level">MSc</div>
                     <h3>Biostatistics in R I &amp; II</h3>
@@ -513,7 +523,7 @@
                 The best ideas don't come from staring at a screen. They come from the space between disciplines,
                 between effort and rest, between a good book and a long run.
             </p>
-            <div class="beyond-grid">
+            <div class="beyond-grid reveal-stagger">
                 <div class="beyond-card reveal">
                     <div class="beyond-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path></svg>
@@ -572,7 +582,7 @@
     <section class="section skills" id="skills">
         <div class="container">
             <h2 class="section-title reveal">Skills &amp; Expertise</h2>
-            <div class="skills-grid">
+            <div class="skills-grid reveal-stagger">
                 <div class="skill-category reveal">
                     <div class="skill-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
@@ -641,11 +651,91 @@
         </div>
     </section>
 
+    <!-- Molecular Viewer Section -->
+    <section class="section molecule-section" id="molecule">
+        <div class="container">
+            <h2 class="section-title reveal">Molecular Playground</h2>
+            <p class="section-subtitle reveal">
+                From nuclear receptors to GPCRs and transcription factors — explore the 3D structures
+                behind my research. These are the kinds of targets I work with using AlphaFold,
+                ColabFold, and molecular visualization tools.
+            </p>
+            <div class="molecule-wrapper reveal">
+                <div class="molecule-viewer-container">
+                    <div id="mol-viewer" class="mol-viewer"></div>
+                    <div class="mol-controls">
+                        <div class="mol-controls-row">
+                            <button class="mol-btn active" data-style="cartoon" aria-label="Cartoon view">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path><path d="M8 12s1.5 2 4 2 4-2 4-2"></path></svg>
+                                Cartoon
+                            </button>
+                            <button class="mol-btn" data-style="stick" aria-label="Stick view">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="20" y2="4"></line><line x1="4" y1="4" x2="20" y2="20"></line></svg>
+                                Stick
+                            </button>
+                            <button class="mol-btn" data-style="sphere" aria-label="Sphere view">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><ellipse cx="12" cy="12" rx="10" ry="4"></ellipse></svg>
+                                Sphere
+                            </button>
+                            <button class="mol-btn" data-style="surface" aria-label="Surface view">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9"></path><path d="M3 12c0 2.21 4.03 4 9 4s9-1.79 9-4"></path></svg>
+                                Surface
+                            </button>
+                        </div>
+                        <div class="mol-controls-row">
+                            <button class="mol-btn mol-btn-spin active" data-action="spin" aria-label="Toggle spin">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-6.2-8.56"></path><polyline points="21 3 21 9 15 9"></polyline></svg>
+                                Spin
+                            </button>
+                            <select class="mol-select" id="mol-protein-select" aria-label="Select protein">
+                                <option value="1PRG">PPAR&#947; — Human (1PRG)</option>
+                                <option value="2RH1">&#946;2-Adrenergic Receptor (2RH1)</option>
+                                <option value="6CMO">GLP-1 Receptor (6CMO)</option>
+                                <option value="1TSR">p53 &#215; DNA (1TSR)</option>
+                                <option value="1AAY">Zif268 Zinc Finger &#215; DNA (1AAY)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="molecule-info">
+                    <div class="mol-info-card">
+                        <h3 id="mol-title">PPAR&#947; (Human)</h3>
+                        <p class="mol-pdb-id">PDB: <span id="mol-pdb-code">1PRG</span></p>
+                        <p id="mol-description" class="mol-description">
+                            Peroxisome proliferator-activated receptor gamma — a nuclear receptor and master
+                            regulator of adipogenesis and glucose metabolism. This structure shows the
+                            ligand-binding domain bound to rosiglitazone, a thiazolidinedione antidiabetic
+                            drug. Central to my BSc thesis on genome-wide PPAR&#947; analysis.
+                        </p>
+                        <div class="mol-meta">
+                            <div class="mol-meta-item">
+                                <span class="mol-meta-label">Residues</span>
+                                <span class="mol-meta-value" id="mol-residues">272</span>
+                            </div>
+                            <div class="mol-meta-item">
+                                <span class="mol-meta-label">Method</span>
+                                <span class="mol-meta-value" id="mol-method">X-ray</span>
+                            </div>
+                            <div class="mol-meta-item">
+                                <span class="mol-meta-label">Resolution</span>
+                                <span class="mol-meta-value" id="mol-resolution">2.3 &#197;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mol-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;vertical-align:middle"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"></path></svg>
+                        Drag to rotate &middot; Scroll to zoom &middot; Right-drag to pan
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section class="section projects" id="projects">
         <div class="container">
             <h2 class="section-title reveal">Things I've Built</h2>
-            <div class="projects-grid">
+            <div class="projects-grid reveal-stagger">
                 <div class="project-card reveal">
                     <div class="project-header">
                         <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"></path></svg>
