@@ -30,8 +30,8 @@
     };
 
     const BASE_COLORS = {
-        cyan: { r: 6, g: 182, b: 212 },
-        purple: { r: 139, g: 92, b: 246 },
+        cyan: { r: 232, g: 113, b: 74 },
+        purple: { r: 255, g: 102, b: 0 },
     };
 
     // Track scroll for helix phase shift
@@ -55,7 +55,7 @@
             this.speedX = (Math.random() - 0.5) * 0.2;
             this.speedY = (Math.random() - 0.5) * 0.2;
             this.opacity = Math.random() * 0.25 + 0.05;
-            this.hue = Math.random() > 0.5 ? 187 : 263;
+            this.hue = Math.random() > 0.5 ? 18 : 25;
         }
 
         update() {
@@ -543,7 +543,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
             // Position shine
             const gradX = (x / rect.width) * 100;
             const gradY = (y / rect.height) * 100;
-            shine.style.background = `radial-gradient(circle at ${gradX}% ${gradY}%, rgba(6, 182, 212, 0.12) 0%, transparent 60%)`;
+            shine.style.background = `radial-gradient(circle at ${gradX}% ${gradY}%, rgba(232, 113, 74, 0.12) 0%, transparent 60%)`;
         });
 
         card.addEventListener('mouseleave', () => {
@@ -583,37 +583,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
 })();
 
-/* ===== Animated Timeline ===== */
-(function () {
-    const timeline = document.querySelector('.timeline');
-    if (!timeline) return;
-
-    const markers = timeline.querySelectorAll('.timeline-marker');
-
-    function updateTimeline() {
-        const rect = timeline.getBoundingClientRect();
-        const timelineTop = rect.top;
-        const timelineHeight = rect.height;
-        const viewportCenter = window.innerHeight * 0.6;
-
-        // Calculate progress
-        const progress = Math.max(0, Math.min(1, (viewportCenter - timelineTop) / timelineHeight));
-        timeline.style.setProperty('--timeline-progress', (progress * 100) + '%');
-
-        // Activate markers
-        markers.forEach(marker => {
-            const markerRect = marker.getBoundingClientRect();
-            if (markerRect.top < viewportCenter) {
-                marker.classList.add('active');
-            } else {
-                marker.classList.remove('active');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', updateTimeline);
-    updateTimeline();
-})();
+/* ===== Animated Timeline (legacy — replaced by Interactive Timeline) ===== */
 
 /* ===== Text Scramble on Hero Name Hover ===== */
 (function () {
@@ -676,7 +646,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
             ripple.style.cssText = `
                 position: absolute;
                 border-radius: 50%;
-                background: rgba(6, 182, 212, 0.3);
+                background: rgba(232, 113, 74, 0.3);
                 transform: scale(0);
                 animation: ripple 0.6s ease-out;
                 pointer-events: none;
@@ -905,4 +875,136 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
     var section = document.querySelector('.molecule-section');
     if (section) sectionObserver.observe(section);
+})();
+
+/* ===== Interactive Timeline ===== */
+(function () {
+    const nodes = document.querySelectorAll('.itl-node');
+    const cards = document.querySelectorAll('.itl-card');
+    const progress = document.getElementById('itl-progress');
+    if (!nodes.length || !cards.length) return;
+
+    function activate(index) {
+        // Update nodes
+        nodes.forEach(n => n.classList.remove('active'));
+        nodes[index].classList.add('active');
+
+        // Update progress bar — fill from left to the active node position
+        const pct = nodes.length > 1 ? (index / (nodes.length - 1)) * 100 : 0;
+        if (progress) progress.style.width = pct + '%';
+
+        // Swap cards with re-trigger of animation
+        cards.forEach(c => {
+            c.classList.remove('active');
+            c.style.animation = 'none';
+        });
+
+        const card = cards[index];
+        // Force reflow to restart animation
+        void card.offsetHeight;
+        card.style.animation = '';
+        card.classList.add('active');
+    }
+
+    nodes.forEach((node, i) => {
+        node.addEventListener('click', () => activate(i));
+    });
+
+    // Keyboard navigation
+    const nodesContainer = document.getElementById('itl-nodes');
+    if (nodesContainer) {
+        nodesContainer.addEventListener('keydown', (e) => {
+            const current = [...nodes].findIndex(n => n.classList.contains('active'));
+            if (e.key === 'ArrowRight' && current < nodes.length - 1) {
+                activate(current + 1);
+                nodes[current + 1].focus();
+            } else if (e.key === 'ArrowLeft' && current > 0) {
+                activate(current - 1);
+                nodes[current - 1].focus();
+            }
+        });
+    }
+
+    // Auto-advance every 6 seconds if section is in viewport
+    let autoTimer;
+    let isPaused = false;
+
+    function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(() => {
+            if (isPaused) return;
+            const current = [...nodes].findIndex(n => n.classList.contains('active'));
+            const next = (current + 1) % nodes.length;
+            activate(next);
+        }, 6000);
+    }
+
+    function stopAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+    }
+
+    // Pause auto on user interaction
+    const timeline = document.querySelector('.itl-timeline');
+    if (timeline) {
+        timeline.addEventListener('mouseenter', () => { isPaused = true; });
+        timeline.addEventListener('mouseleave', () => { isPaused = false; });
+        timeline.addEventListener('focusin', () => { isPaused = true; });
+        timeline.addEventListener('focusout', () => { isPaused = false; });
+    }
+
+    // Start auto-advance when section is visible
+    const expObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startAuto();
+            } else {
+                stopAuto();
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const expSection = document.getElementById('experience');
+    if (expSection) expObserver.observe(expSection);
+
+    // Set initial progress
+    activate(0);
+})();
+
+/* ===== Bookshelf Tooltip ===== */
+(function () {
+    const books = document.querySelectorAll('.book');
+    const tooltip = document.getElementById('book-tooltip');
+    const tipTitle = document.getElementById('tooltip-title');
+    const tipAuthor = document.getElementById('tooltip-author');
+    const tipNote = document.getElementById('tooltip-note');
+    if (!books.length || !tooltip) return;
+
+    books.forEach(book => {
+        book.addEventListener('mouseenter', (e) => {
+            tipTitle.textContent = book.dataset.title;
+            tipAuthor.textContent = book.dataset.author;
+            tipNote.textContent = book.dataset.note;
+            tooltip.classList.add('visible');
+            positionTooltip(e);
+        });
+
+        book.addEventListener('mousemove', positionTooltip);
+
+        book.addEventListener('mouseleave', () => {
+            tooltip.classList.remove('visible');
+        });
+    });
+
+    function positionTooltip(e) {
+        const x = e.clientX + 16;
+        const y = e.clientY - 10;
+        const rect = tooltip.getBoundingClientRect();
+
+        // Keep tooltip in viewport
+        const maxX = window.innerWidth - rect.width - 16;
+        const maxY = window.innerHeight - rect.height - 16;
+
+        tooltip.style.left = Math.min(x, maxX) + 'px';
+        tooltip.style.top = Math.min(y, maxY) + 'px';
+    }
 })();
