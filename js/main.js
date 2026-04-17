@@ -1028,29 +1028,32 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 (function () {
     const nodes = document.querySelectorAll('.itl-node');
     const cards = document.querySelectorAll('.itl-card');
+    const track = document.getElementById('itl-cards-track');
+    const cardsEl = document.getElementById('itl-cards');
     const progress = document.getElementById('itl-progress');
-    if (!nodes.length || !cards.length) return;
+    if (!nodes.length || !cards.length || !track || !cardsEl) return;
+
+    let currentIndex = 0;
 
     function activate(index) {
+        index = Math.max(0, Math.min(nodes.length - 1, index));
+        currentIndex = index;
+
         // Update nodes
         nodes.forEach(n => n.classList.remove('active'));
         nodes[index].classList.add('active');
 
-        // Update progress bar — fill from left to the active node position
+        // Update progress bar
         const pct = nodes.length > 1 ? (index / (nodes.length - 1)) * 100 : 0;
         if (progress) progress.style.width = pct + '%';
 
-        // Swap cards with re-trigger of animation
-        cards.forEach(c => {
-            c.classList.remove('active');
-            c.style.animation = 'none';
-        });
+        // Slide track to the active card
+        track.classList.remove('is-dragging');
+        track.style.transform = `translateX(${-index * 100}%)`;
 
-        const card = cards[index];
-        // Force reflow to restart animation
-        void card.offsetHeight;
-        card.style.animation = '';
-        card.classList.add('active');
+        // Update active card class
+        cards.forEach(c => c.classList.remove('active'));
+        cards[index].classList.add('active');
     }
 
     nodes.forEach((node, i) => {
@@ -1061,13 +1064,12 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const nodesContainer = document.getElementById('itl-nodes');
     if (nodesContainer) {
         nodesContainer.addEventListener('keydown', (e) => {
-            const current = [...nodes].findIndex(n => n.classList.contains('active'));
-            if (e.key === 'ArrowRight' && current < nodes.length - 1) {
-                activate(current + 1);
-                nodes[current + 1].focus();
-            } else if (e.key === 'ArrowLeft' && current > 0) {
-                activate(current - 1);
-                nodes[current - 1].focus();
+            if (e.key === 'ArrowRight' && currentIndex < nodes.length - 1) {
+                activate(currentIndex + 1);
+                nodes[currentIndex].focus();
+            } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                activate(currentIndex - 1);
+                nodes[currentIndex].focus();
             }
         });
     }
@@ -1080,9 +1082,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         stopAuto();
         autoTimer = setInterval(() => {
             if (isPaused) return;
-            const current = [...nodes].findIndex(n => n.classList.contains('active'));
-            const next = (current + 1) % nodes.length;
-            activate(next);
+            activate((currentIndex + 1) % nodes.length);
         }, 6000);
     }
 
@@ -1090,7 +1090,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         if (autoTimer) clearInterval(autoTimer);
     }
 
-    // Pause auto on user interaction
     const timeline = document.querySelector('.itl-timeline');
     if (timeline) {
         timeline.addEventListener('mouseenter', () => { isPaused = true; });
@@ -1099,67 +1098,79 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         timeline.addEventListener('focusout', () => { isPaused = false; });
     }
 
-    // Drag / swipe on the card area
-    const cardsEl = document.getElementById('itl-cards');
-    if (cardsEl) {
-        let dragStartX = null;
-        let isDragging = false;
-        const DRAG_THRESHOLD = 50; // px needed to trigger a switch
+    // ── Drag / swipe ──────────────────────────────────────────────
+    let dragStartX = null;
+    let dragCurrentX = null;
+    let isDragging = false;
+    const SNAP_THRESHOLD = 80; // px to commit a slide
 
-        function getCurrent() {
-            return [...nodes].findIndex(n => n.classList.contains('active'));
-        }
-
-        function onDragStart(x) {
-            dragStartX = x;
-            isDragging = false;
-            isPaused = true;
-            cardsEl.style.cursor = 'grabbing';
-        }
-
-        function onDragEnd(x) {
-            cardsEl.style.cursor = 'grab';
-            if (dragStartX === null) return;
-            const delta = x - dragStartX;
-            dragStartX = null;
-            if (Math.abs(delta) < DRAG_THRESHOLD) return;
-            const current = getCurrent();
-            if (delta < 0 && current < nodes.length - 1) {
-                activate(current + 1); // drag left → next (older)
-            } else if (delta > 0 && current > 0) {
-                activate(current - 1); // drag right → previous (newer)
-            }
-        }
-
-        // Mouse
-        cardsEl.addEventListener('mousedown', e => onDragStart(e.clientX));
-        window.addEventListener('mouseup', e => { if (dragStartX !== null) onDragEnd(e.clientX); });
-        cardsEl.addEventListener('mousemove', e => { if (dragStartX !== null && Math.abs(e.clientX - dragStartX) > 5) isDragging = true; });
-        // Prevent click-through after a drag
-        cardsEl.addEventListener('click', e => { if (isDragging) { e.stopPropagation(); isDragging = false; } }, true);
-
-        // Touch
-        cardsEl.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
-        cardsEl.addEventListener('touchend', e => onDragEnd(e.changedTouches[0].clientX));
-
-        cardsEl.style.cursor = 'grab';
+    function getBaseOffset() {
+        return -currentIndex * cardsEl.offsetWidth;
     }
+
+    function onPointerDown(x) {
+        dragStartX = x;
+        dragCurrentX = x;
+        isDragging = false;
+        isPaused = true;
+        track.classList.add('is-dragging');
+    }
+
+    function onPointerMove(x) {
+        if (dragStartX === null) return;
+        dragCurrentX = x;
+        const delta = x - dragStartX;
+        if (Math.abs(delta) > 4) isDragging = true;
+        // Rubber-band resistance at edges
+        let offset = getBaseOffset() + delta;
+        const max = 0;
+        const min = -(nodes.length - 1) * cardsEl.offsetWidth;
+        if (offset > max) offset = max + (offset - max) * 0.25;
+        if (offset < min) offset = min + (offset - min) * 0.25;
+        track.style.transform = `translateX(${offset}px)`;
+    }
+
+    function onPointerUp() {
+        if (dragStartX === null) return;
+        const delta = dragCurrentX - dragStartX;
+        dragStartX = null;
+        dragCurrentX = null;
+
+        if (!isDragging || Math.abs(delta) < SNAP_THRESHOLD) {
+            // Snap back to current
+            activate(currentIndex);
+        } else if (delta < 0) {
+            activate(currentIndex + 1);
+        } else {
+            activate(currentIndex - 1);
+        }
+        isDragging = false;
+    }
+
+    // Mouse events
+    cardsEl.addEventListener('mousedown', e => { e.preventDefault(); onPointerDown(e.clientX); });
+    window.addEventListener('mousemove', e => onPointerMove(e.clientX));
+    window.addEventListener('mouseup', () => onPointerUp());
+
+    // Touch events
+    cardsEl.addEventListener('touchstart', e => onPointerDown(e.touches[0].clientX), { passive: true });
+    cardsEl.addEventListener('touchmove', e => onPointerMove(e.touches[0].clientX), { passive: true });
+    cardsEl.addEventListener('touchend', () => onPointerUp());
+
+    // Prevent links/buttons inside cards from firing during drag
+    cardsEl.addEventListener('click', e => { if (isDragging) e.stopPropagation(); }, true);
 
     // Start auto-advance when section is visible
     const expObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                startAuto();
-            } else {
-                stopAuto();
-            }
+            if (entry.isIntersecting) startAuto();
+            else stopAuto();
         });
     }, { threshold: 0.2 });
 
     const expSection = document.getElementById('experience');
     if (expSection) expObserver.observe(expSection);
 
-    // Set initial progress
     activate(0);
 })();
 
