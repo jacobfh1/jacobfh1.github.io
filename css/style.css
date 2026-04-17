@@ -782,6 +782,21 @@ body {
     cursor: default;
 }
 
+.hero-name--morse {
+    font-family: var(--font-mono) !important;
+    font-size: clamp(0.9rem, 2vw, 1.4rem) !important;
+    letter-spacing: 2px !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
+    background: none !important;
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+    word-break: break-all;
+}
+
+[data-theme="light"] .hero-name--morse {
+    -webkit-text-fill-color: #1a1a2e !important;
+    text-shadow: 0 0 18px rgba(26, 26, 46, 0.2);
+}
+
 .hero-name .scramble-char {
     display: inline-block;
     transition: transform 0.1s ease;
@@ -1878,6 +1893,179 @@ body {
     }
 }
 
+/* ===== Personality Section ===== */
+.personality-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    margin-bottom: 30px;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.personality-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-glow);
+}
+
+.personality-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+}
+
+.personality-type-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    padding: 20px 24px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+    box-shadow: 0 8px 24px rgba(232, 113, 74, 0.3);
+}
+
+.personality-type-label {
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.personality-type-name {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.85);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.personality-intro {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    flex: 1;
+    min-width: 240px;
+}
+
+.personality-traits {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.trait {
+    cursor: default;
+}
+
+.trait-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.trait-name {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.trait-value {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.trait-value strong {
+    color: var(--text-primary);
+}
+
+.trait-bar-track {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.trait-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
+    background: var(--trait-color);
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.trait-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+.trait-poles {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.trait-pole {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.trait-pole.active {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.trait-context {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    padding-left: 12px;
+    border-left: 2px solid var(--border);
+    margin: 0;
+    transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.trait:hover .trait-context {
+    border-color: var(--accent);
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .personality-card {
+        padding: 28px 20px;
+    }
+
+    .personality-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .personality-type-badge {
+        width: 100%;
+    }
+}
+
 /* ===== Interactive Timeline ===== */
 .itl-timeline {
     display: flex;
@@ -2324,5 +2512,217 @@ a.itl-card-org:hover {
 
     .book-spine span {
         font-size: 0.55rem;
+    }
+}
+
+/* ===== Hero Positioning Statement ===== */
+.hero-positioning {
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 1.2rem 0 0.5rem;
+    opacity: 0.92;
+    letter-spacing: 0.01em;
+}
+
+[data-theme="light"] .hero-positioning {
+    color: var(--accent-dark);
+}
+
+/* ===== About Manifesto Blockquote ===== */
+.about-manifesto {
+    position: relative;
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem 1.25rem 1.75rem;
+    border-left: 3px solid var(--accent);
+    background: var(--gradient-subtle);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+.about-manifesto::before {
+    content: '"';
+    position: absolute;
+    top: -0.25rem;
+    left: 1rem;
+    font-size: 3.5rem;
+    font-family: Georgia, serif;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* ===== Work With Me Section ===== */
+.work-with-me {
+    background: var(--bg-secondary);
+}
+
+.work-with-me .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.wwm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.wwm-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.wwm-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-subtle);
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    border-radius: inherit;
+}
+
+.wwm-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    border-color: var(--border-hover);
+}
+
+.wwm-card:hover::before {
+    opacity: 1;
+}
+
+.wwm-card--featured {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent), var(--shadow-md);
+    transform: translateY(-6px);
+}
+
+.wwm-card--featured:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 0 1px var(--accent), var(--shadow-lg), var(--shadow-glow);
+}
+
+.wwm-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--accent-glow);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-bottom: 0.25rem;
+}
+
+.wwm-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.wwm-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    padding: 3px 10px;
+    border: 1px solid var(--border-hover);
+    border-radius: 100px;
+    display: inline-block;
+    width: fit-content;
+    background: var(--accent-glow);
+}
+
+.wwm-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.wwm-card p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0;
+    flex: 1;
+}
+
+.wwm-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.25rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.wwm-list li {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wwm-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.wwm-cta {
+    margin-top: auto;
+    text-align: center;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.88rem;
+}
+
+/* Work With Me responsive */
+@media (max-width: 900px) {
+    .wwm-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .wwm-card--featured {
+        transform: none;
+    }
+
+    .wwm-card--featured:hover {
+        transform: translateY(-4px);
+    }
+}
+
+@media (max-width: 480px) {
+    .wwm-card {
+        padding: 1.5rem 1.25rem;
     }
 }

@@ -39,46 +39,123 @@
         scrollOffset = window.pageYOffset * 0.002;
     });
 
+    // Amino acid single-letter codes (all 20 standard)
+    const AMINO_ACIDS = 'ARNDCQEGHILKMFPSTWYV';
+
+    // Node-edge graph (protein interaction / neural net aesthetic)
+    let graphNodes = [];
+    const GRAPH = {
+        nodeCount: 22,
+        maxEdgeDist: 200,
+        nodeOpacity: 0.07,
+        edgeOpacity: 0.04,
+        nodeRadius: 2.5,
+        pulseMag: 1.2,
+        speed: 0.18,
+    };
+
     function resize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         initFloatingParticles();
+        initGraph();
     }
 
+    // ── Amino Acid Floating Letters ──────────────────────────────────────
     class FloatingParticle {
-        constructor() { this.reset(); }
+        constructor() { this.reset(true); }
 
-        reset() {
+        reset(init) {
             this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 1.5 + 0.3;
-            this.speedX = (Math.random() - 0.5) * 0.2;
-            this.speedY = (Math.random() - 0.5) * 0.2;
-            this.opacity = Math.random() * 0.25 + 0.05;
-            this.hue = Math.random() > 0.5 ? 18 : 25;
+            this.y = init ? Math.random() * canvas.height : -20;
+            this.letter = AMINO_ACIDS[Math.floor(Math.random() * AMINO_ACIDS.length)];
+            this.size = Math.random() * 4 + 9;          // 9–13 px font
+            this.speedX = (Math.random() - 0.5) * 0.15;
+            this.speedY = Math.random() * 0.12 + 0.04;  // drift downward gently
+            this.opacity = Math.random() * 0.1 + 0.04;  // 0.04–0.14
+            this.hue = Math.random() > 0.5 ? 18 : 28;
         }
 
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            if (this.x < -20) this.x = canvas.width + 10;
+            if (this.x > canvas.width + 20) this.x = -10;
+            if (this.y > canvas.height + 20) this.reset(false);
         }
 
         draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `hsla(${this.hue}, 80%, 60%, ${this.opacity})`;
-            ctx.fill();
+            ctx.save();
+            ctx.font = `500 ${this.size}px "JetBrains Mono", monospace`;
+            ctx.fillStyle = `hsla(${this.hue}, 75%, 62%, ${this.opacity})`;
+            ctx.fillText(this.letter, this.x, this.y);
+            ctx.restore();
         }
     }
 
     function initFloatingParticles() {
         floatingParticles = [];
-        const count = Math.min(Math.floor((canvas.width * canvas.height) / 30000), 40);
+        const count = Math.min(Math.floor((canvas.width * canvas.height) / 18000), 55);
         for (let i = 0; i < count; i++) {
             floatingParticles.push(new FloatingParticle());
         }
+    }
+
+    // ── Node-Edge Protein/AI Graph ───────────────────────────────────────
+    function initGraph() {
+        graphNodes = [];
+        for (let i = 0; i < GRAPH.nodeCount; i++) {
+            graphNodes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * GRAPH.speed,
+                vy: (Math.random() - 0.5) * GRAPH.speed,
+                phase: Math.random() * Math.PI * 2,   // for pulse
+            });
+        }
+    }
+
+    function drawGraph() {
+        const t = Date.now() * 0.0008;
+
+        // Update node positions
+        graphNodes.forEach(n => {
+            n.x += n.vx;
+            n.y += n.vy;
+            if (n.x < 0 || n.x > canvas.width)  n.vx *= -1;
+            if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+        });
+
+        // Draw edges first
+        ctx.save();
+        for (let i = 0; i < graphNodes.length; i++) {
+            for (let j = i + 1; j < graphNodes.length; j++) {
+                const a = graphNodes[i], b = graphNodes[j];
+                const dx = b.x - a.x, dy = b.y - a.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist > GRAPH.maxEdgeDist) continue;
+                // Fade edge by distance
+                const alpha = GRAPH.edgeOpacity * (1 - dist / GRAPH.maxEdgeDist);
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.strokeStyle = `rgba(232, 113, 74, ${alpha})`;
+                ctx.lineWidth = 0.6;
+                ctx.stroke();
+            }
+        }
+
+        // Draw nodes
+        graphNodes.forEach(n => {
+            const pulse = Math.sin(t + n.phase);
+            const r = GRAPH.nodeRadius + pulse * GRAPH.pulseMag;
+            const alpha = GRAPH.nodeOpacity + pulse * 0.025;
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, Math.max(0.5, r), 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(232, 113, 74, ${alpha})`;
+            ctx.fill();
+        });
+        ctx.restore();
     }
 
     // Breathing amplitude
@@ -239,7 +316,10 @@
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw floating particles
+        // Layer 1: faint node-edge graph (deepest)
+        drawGraph();
+
+        // Layer 2: amino acid letters
         floatingParticles.forEach(p => {
             p.update();
             p.draw();
@@ -287,7 +367,7 @@
         resize();
     });
 
-    resize();
+    resize();   // also calls initGraph() + initFloatingParticles()
     animate();
 })();
 
@@ -585,40 +665,73 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
 /* ===== Animated Timeline (legacy — replaced by Interactive Timeline) ===== */
 
-/* ===== Text Scramble on Hero Name Hover ===== */
+/* ===== Morse Code Typewriter on Hero Name Hover ===== */
 (function () {
     const heroName = document.querySelector('.hero-name');
     if (!heroName) return;
 
-    const originalText = heroName.textContent;
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&';
-    let isAnimating = false;
+    const morseMap = {
+        a:'.-', b:'-...', c:'-.-.', d:'-..', e:'.', f:'..-.',
+        g:'--.', h:'....', i:'..', j:'.---', k:'-.-', l:'.-..',
+        m:'--', n:'-.', o:'---', p:'.--.', q:'--.-', r:'.-.',
+        s:'...', t:'-', u:'..-', v:'...-', w:'.--', x:'-..-',
+        y:'-.--', z:'--..', ' ': '/'
+    };
+
+    const originalText = heroName.textContent.trim();
+    const morseText = originalText.toLowerCase()
+        .split('').map(c => morseMap[c] || c).join(' ');
+
+    let timer = null;
+    let active = false;
+
+    function clearTimer() {
+        if (timer) { clearTimeout(timer); timer = null; }
+    }
+
+    function typewrite(str, i) {
+        if (!active) return;
+        heroName.textContent = str.slice(0, i);
+        if (i <= str.length) {
+            // Vary speed: dot=22ms, dash=38ms, space=28ms, word sep=55ms
+            const ch = str[i - 1];
+            const delay = ch === '-' ? 38 : ch === '/' ? 55 : ch === ' ' ? 28 : 22;
+            timer = setTimeout(() => typewrite(str, i + 1), delay);
+        }
+    }
+
+    function restore(str, i) {
+        if (active) return;
+        heroName.textContent = str.slice(0, i);
+        if (i <= str.length) {
+            timer = setTimeout(() => restore(str, i + 1), 18);
+        } else {
+            heroName.classList.remove('hero-name--morse');
+        }
+    }
 
     heroName.addEventListener('mouseenter', () => {
-        if (isAnimating) return;
-        isAnimating = true;
+        active = true;
+        clearTimer();
+        heroName.style.transition = 'opacity 0.15s ease';
+        heroName.style.opacity = '0';
+        timer = setTimeout(() => {
+            heroName.classList.add('hero-name--morse');
+            heroName.style.opacity = '1';
+            typewrite(morseText, 1);
+        }, 150);
+    });
 
-        let iteration = 0;
-        const maxIterations = originalText.length;
-
-        const interval = setInterval(() => {
-            heroName.textContent = originalText
-                .split('')
-                .map((char, index) => {
-                    if (char === ' ') return ' ';
-                    if (index < iteration) return originalText[index];
-                    return chars[Math.floor(Math.random() * chars.length)];
-                })
-                .join('');
-
-            iteration += 1 / 2;
-
-            if (iteration >= maxIterations) {
-                heroName.textContent = originalText;
-                clearInterval(interval);
-                isAnimating = false;
-            }
-        }, 30);
+    heroName.addEventListener('mouseleave', () => {
+        active = false;
+        clearTimer();
+        heroName.style.opacity = '0';
+        timer = setTimeout(() => {
+            heroName.classList.remove('hero-name--morse');
+            heroName.textContent = '';
+            heroName.style.opacity = '1';
+            restore(originalText, 1);
+        }, 150);
     });
 })();
 
@@ -875,6 +988,40 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
     var section = document.querySelector('.molecule-section');
     if (section) sectionObserver.observe(section);
+})();
+
+/* ===== Personality Trait Bars ===== */
+(function () {
+    const traits = document.querySelectorAll('.trait');
+    if (!traits.length) return;
+
+    function animateBars() {
+        traits.forEach(trait => {
+            const fill = trait.querySelector('.trait-bar-fill');
+            const pct = trait.dataset.pct;
+            if (fill) fill.style.width = pct + '%';
+        });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Stagger each bar slightly
+                traits.forEach((trait, i) => {
+                    const fill = trait.querySelector('.trait-bar-fill');
+                    if (fill) {
+                        setTimeout(() => {
+                            fill.style.width = trait.dataset.pct + '%';
+                        }, i * 120);
+                    }
+                });
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const section = document.querySelector('.personality-card');
+    if (section) observer.observe(section);
 })();
 
 /* ===== Interactive Timeline ===== */
