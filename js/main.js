@@ -1099,6 +1099,52 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         timeline.addEventListener('focusout', () => { isPaused = false; });
     }
 
+    // Drag / swipe on the card area
+    const cardsEl = document.getElementById('itl-cards');
+    if (cardsEl) {
+        let dragStartX = null;
+        let isDragging = false;
+        const DRAG_THRESHOLD = 50; // px needed to trigger a switch
+
+        function getCurrent() {
+            return [...nodes].findIndex(n => n.classList.contains('active'));
+        }
+
+        function onDragStart(x) {
+            dragStartX = x;
+            isDragging = false;
+            isPaused = true;
+            cardsEl.style.cursor = 'grabbing';
+        }
+
+        function onDragEnd(x) {
+            cardsEl.style.cursor = 'grab';
+            if (dragStartX === null) return;
+            const delta = x - dragStartX;
+            dragStartX = null;
+            if (Math.abs(delta) < DRAG_THRESHOLD) return;
+            const current = getCurrent();
+            if (delta < 0 && current < nodes.length - 1) {
+                activate(current + 1); // drag left → next (older)
+            } else if (delta > 0 && current > 0) {
+                activate(current - 1); // drag right → previous (newer)
+            }
+        }
+
+        // Mouse
+        cardsEl.addEventListener('mousedown', e => onDragStart(e.clientX));
+        window.addEventListener('mouseup', e => { if (dragStartX !== null) onDragEnd(e.clientX); });
+        cardsEl.addEventListener('mousemove', e => { if (dragStartX !== null && Math.abs(e.clientX - dragStartX) > 5) isDragging = true; });
+        // Prevent click-through after a drag
+        cardsEl.addEventListener('click', e => { if (isDragging) { e.stopPropagation(); isDragging = false; } }, true);
+
+        // Touch
+        cardsEl.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
+        cardsEl.addEventListener('touchend', e => onDragEnd(e.changedTouches[0].clientX));
+
+        cardsEl.style.cursor = 'grab';
+    }
+
     // Start auto-advance when section is visible
     const expObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
